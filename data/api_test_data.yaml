@@ -1,0 +1,175 @@
+
+test_get_posts:
+  path: "/posts"
+  method: "GET"
+  expected_status: 200
+
+test_cases:
+  posts:
+    get_all_posts:
+      name: "获取所有帖子"
+      tags: ["posts", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/posts"
+      expected:
+        status_code: 200
+        response_time: 3000
+
+    get_post_by_id:
+      name: "获取指定ID的帖子"
+      tags: ["posts", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/posts/1"
+      expected:
+        status_code: 200
+        response_time: 3000
+        json_path:
+          "id": 1
+          "userId": 1
+
+    create_post:
+      name: "创建新帖子"
+      tags: ["posts", "post"]
+      method: POST
+      url: "https://jsonplaceholder.typicode.com/posts"
+      body:
+        title: "测试标题"
+        body: "测试内容"
+        userId: 1
+      expected:
+        status_code: 201
+        response_time: 3000
+        json_path:
+          "title": "测试标题"
+          "body": "测试内容"
+          "userId": 1
+
+    update_post:
+      name: "更新帖子"
+      tags: ["posts", "put"]
+      method: PUT
+      url: "https://jsonplaceholder.typicode.com/posts/1"
+      body:
+        id: 1
+        title: "更新的标题"
+        body: "更新的内容"
+        userId: 1
+      expected:
+        status_code: 200
+        response_time: 3000
+        json_path:
+          "title": "更新的标题"
+          "body": "更新的内容"
+
+    delete_post:
+      name: "删除帖子"
+      tags: ["posts", "delete"]
+      method: DELETE
+      url: "https://jsonplaceholder.typicode.com/posts/1"
+      expected:
+        status_code: 200
+        response_time: 3000
+
+  comments:
+    get_all_comments:
+      name: "获取所有评论"
+      tags: ["comments", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/comments"
+      expected:
+        status_code: 200
+        response_time: 3000
+
+    get_comments_by_post:
+      name: "获取指定帖子的评论"
+      tags: ["comments", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/posts/1/comments"
+      expected:
+        status_code: 200
+        response_time: 3000
+
+  users:
+    get_all_users:
+      name: "获取所有用户"
+      tags: ["users", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/users"
+      expected:
+        status_code: 200
+        response_time: 3000
+
+    get_user_by_id:
+      name: "获取指定ID的用户"
+      tags: ["users", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/users/1"
+      expected:
+        status_code: 200
+        response_time: 3000
+        json_path:
+          "id": 1
+          "name": "Leanne Graham"
+
+  todos:
+    get_all_todos:
+      name: "获取所有待办事项"
+      tags: ["todos", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/todos"
+      expected:
+        status_code: 200
+        response_time: 3000
+
+    get_user_todos:
+      name: "获取指定用户的待办事项"
+      tags: ["todos", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/users/1/todos"
+      expected:
+        status_code: 200
+        response_time: 3000
+        json_path:
+          "[0].userId": 1
+
+  albums:
+    get_all_albums:
+      name: "获取所有相册"
+      tags: ["albums", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/albums"
+      expected:
+        status_code: 200
+        response_time: 3000
+
+    get_user_albums:
+      name: "获取指定用户的相册"
+      tags: ["albums", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/users/1/albums"
+      expected:
+        status_code: 200
+        response_time: 3000
+        json_path:
+          "[0].userId": 1
+
+  photos:
+    get_all_photos:
+      name: "获取所有照片"
+      tags: ["photos", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/photos"
+      expected:
+        status_code: 200
+        response_time: 3000
+
+    get_album_photos:
+      name: "获取指定相册的照片"
+      tags: ["photos", "get"]
+      method: GET
+      url: "https://jsonplaceholder.typicode.com/albums/1/photos"
+      expected:
+        status_code: 200
+        response_time: 3000
+        json_path:
+          "[0].albumId": 1

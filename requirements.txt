@@ -1,0 +1,14 @@
+loguru~=0.7.3
+requests==2.32.3
+jsonschema==4.20.0
+pyperclip~=1.9.0
+dotenv~=0.9.9
+python-dotenv~=1.0.1
+pytest==8.3.5
+pytest-html==3.1.1
+pytest-timeout==2.3.1
+allure-pytest==2.14.0
+PyMySQL~=1.1.1
+pyyaml~=6.0.2
+swagger-parser==1.0.1
+allure-python-commons~=2.14.0
