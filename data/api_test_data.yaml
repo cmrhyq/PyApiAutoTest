@@ -1,4 +1,3 @@
-
 test_get_posts:
   path: "/posts"
   method: "GET"
