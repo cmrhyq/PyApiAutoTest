@@ -8,7 +8,7 @@
 @Description None
 """
 import configparser
-from config.manager_config import ManagerConfig
+from core.config.manager_config import ManagerConfig
 
 
 class ReadConfigIni(object):

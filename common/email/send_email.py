@@ -20,7 +20,7 @@ from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from smtplib import SMTP, SMTP_SSL
 from common.log import Logger
-from config.ini.read_config_ini import ReadConfigIni
+from core.config.ini.read_config_ini import ReadConfigIni
 
 logger = Logger().get_logger()
 
