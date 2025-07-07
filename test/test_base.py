@@ -1,6 +1,6 @@
 import requests
 from common.log import Logger
-from core.config.ini.read_config_ini import ReadConfigIni
+from config.ini.read_config_ini import ReadConfigIni
 
 logger = Logger().get_logger()
 

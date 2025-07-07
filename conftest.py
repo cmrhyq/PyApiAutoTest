@@ -20,8 +20,8 @@ def create_logger(log_file_path=None):
     )
 
     if not log_file_path:
-        # timestamp = datetime.now().strftime("%Y-%m-%d")
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        timestamp = datetime.now().strftime("%Y-%m-%d")
+        # timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         log_dir = Path("./logs")
         log_dir.mkdir(exist_ok=True)
         log_file_path = log_dir / f"pytest_{timestamp}.log"
