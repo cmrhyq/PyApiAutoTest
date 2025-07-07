@@ -8,7 +8,6 @@
 @Description None
 """
 import os
-from selenium.webdriver.common.by import By
 
 from utils.time.time_utils import dt_strftime
 
@@ -16,9 +15,6 @@ from utils.time.time_utils import dt_strftime
 class ManagerConfig(object):
     # 项目目录
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-    # 页面元素目录
-    ELEMENT_PATH = os.path.join(BASE_DIR, 'page_element')
 
     @property
     def log_file(self):
@@ -37,14 +33,17 @@ class ManagerConfig(object):
         return ini_file
 
     @property
-    def test_data_folder(self):
+    def env_file(self):
         """测试文件"""
-        test_data = os.path.join(self.BASE_DIR, 'data')
-        if not os.path.exists(test_data):
-            os.makedirs(test_data)
-        return test_data
+        env_file = os.path.join(self.BASE_DIR, 'config', 'env_config.yaml')
+        if not os.path.exists(env_file):
+            raise FileNotFoundError(f"配置文件{env_file}不存在")
+        return env_file
 
-
-if __name__ == '__main__':
-    cm = ManagerConfig()
-    print(cm.BASE_DIR)
+    @property
+    def test_file(self):
+        """测试文件目录"""
+        test_folder = os.path.join(self.BASE_DIR, 'data')
+        if not os.path.exists(test_folder):
+            os.makedirs(test_folder)
+        return test_folder
