@@ -1,12 +1,89 @@
 import json
-import os
+
+import allure
 import pytest
 import logging
 from datetime import datetime
 from pathlib import Path
-from pytest_metadata.plugin import metadata_key
 
-from test.api.user_api import UserApi
+from core.http.http_client import HttpClient
+from core.loader.data_loader import DataLoader
+
+
+@pytest.fixture(scope="session")
+def data_loader():
+    """数据加载器fixture"""
+    return DataLoader()
+
+
+@pytest.fixture(scope="session")
+def api_client(data_loader):
+    """API客户端fixture"""
+    env_config = data_loader.get_current_env_config()
+
+    # 添加环境信息到Allure报告
+    allure.dynamic.label("environment", data_loader.load_env_config().get('current_env', 'unknown'))
+
+    # 附加环境配置信息
+    allure.attach(
+        json.dumps(env_config, ensure_ascii=False, indent=2),
+        "环境配置",
+        allure.attachment_type.JSON
+    )
+
+    return HttpClient(
+        base_url=env_config['base_url'],
+        default_headers=env_config.get('headers', {}),
+        timeout=env_config.get('timeout', 30)
+    )
+
+
+@pytest.fixture(scope="session")
+def test_cases(data_loader):
+    """测试用例fixture"""
+    cases = data_loader.get_test_cases("I:\\Code\\4.python_code\\PyApiAutoTest\\data\\api_test_data.yaml")
+
+    # 附加测试用例配置信息
+    allure.attach(
+        json.dumps(cases, ensure_ascii=False, indent=2),
+        "测试用例配置",
+        allure.attachment_type.JSON
+    )
+
+    return cases
+
+
+def pytest_configure(config):
+    """pytest配置钩子"""
+    # 设置Allure报告信息
+    if hasattr(config, '_allure_config'):
+        config._allure_config.title = "API自动化测试报告"
+        config._allure_config.description = "基于pytest+requests的API自动化测试"
+
+
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    """生成测试报告的钩子"""
+    outcome = yield
+    rep = outcome.get_result()
+
+    # 只处理测试执行阶段
+    if rep.when == "call":
+        # 获取测试用例信息
+        if hasattr(item, 'callspec') and 'case' in item.callspec.params:
+            case = item.callspec.params['case']
+
+            # 设置测试用例标签
+            if 'method' in case:
+                allure.dynamic.tag(case['method'])
+
+            # 如果测试失败，附加更多信息
+            if rep.failed:
+                allure.attach(
+                    rep.longrepr.reprcrash.message if hasattr(rep.longrepr, 'reprcrash') else str(rep.longrepr),
+                    "失败信息",
+                    allure.attachment_type.TEXT
+                )
 
 
 # --------------------------------- 日志相关
@@ -36,10 +113,6 @@ def create_logger(log_file_path=None):
     logger.addHandler(file_handler)
     return logger
 
-@pytest.fixture(scope='class')
-def user_api():
-    return UserApi()
-
 @pytest.fixture(scope="session")
 def logger(pytestconfig):
     """Provide logger fixture for test cases"""
@@ -57,42 +130,6 @@ def log_test_info(request, logger):
     if hasattr(request.node, 'rep_call'):
         result = "PASSED" if request.node.rep_call.passed else "FAILED"
         logger.info(f"Test completed: {test_name}, Result: {result}")
-
-
-# --------------------------------- 测试报告相关
-def pytest_configure(config):
-    # 设置元数据
-    config.stash[metadata_key].update({
-        "项目名称": "磐基接口自动化",
-        "接口模块": "磐基接口模块",
-        "接口地址": "http:***.com"
-    })
-
-    # 设置日志文件路径
-    # time_now = datetime.now().strftime('%Y%m%d')
-    time_now = datetime.now().strftime('%Y%m%d%H%M%S')
-    config.option.log_file = os.path.join(config.rootdir, 'logs', f'pytest_{time_now}.log')
-
-
-def pytest_html_report_title(report):
-    report.title = "测试报告"
-
-
-def pytest_html_results_summary(prefix, summary, postfix):
-    prefix.extend([
-        "<p>所属部门: 磐基自动化测试</p>",
-        "<p>测试人员: Alan Huang</p>"
-    ])
-
-
-def pytest_html_results_table_header(cells):
-    cells.insert(2, "<th>描述</th>")
-    cells.insert(1, '<th class="sortable time" data-column-type="time">测试时间</th>')
-
-
-def pytest_html_results_table_row(report, cells):
-    cells.insert(2, f"<td>{report.description}</td>")
-    cells.insert(1, f'<td class="col-time">{datetime.utcnow()}</td>')
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)

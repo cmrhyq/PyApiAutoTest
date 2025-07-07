@@ -14,7 +14,7 @@ from utils.time.time_utils import dt_strftime
 
 class ManagerConfig(object):
     # 项目目录
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
     @property
     def log_file(self):
@@ -23,14 +23,6 @@ class ManagerConfig(object):
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)
         return os.path.join(log_dir, '{}.log'.format(dt_strftime()))
-
-    @property
-    def system_ini_file(self):
-        """配置文件"""
-        ini_file = os.path.join(self.BASE_DIR, 'app_config.ini')
-        if not os.path.exists(ini_file):
-            raise FileNotFoundError(f"配置文件{ini_file}不存在！")
-        return ini_file
 
     @property
     def env_file(self):

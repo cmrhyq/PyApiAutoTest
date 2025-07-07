@@ -3,8 +3,10 @@ from typing import Dict, Any, List
 
 import yaml
 
-from config.manager_config import ManagerConfig
+from common.log import Logger
+from config.manager.manager_config import ManagerConfig
 
+logger = Logger().get_logger()
 
 class DataLoader:
     """
@@ -19,6 +21,7 @@ class DataLoader:
         """
         加载环境配置
         """
+        logger.info(f"加载环境配置文件: {self.env_file}")
         with open(self.env_file, "r", encoding="utf-8") as f:
             return yaml.safe_load(f)
 
@@ -27,6 +30,7 @@ class DataLoader:
         加载测试配置
         :param file_path: 测试文件路径
         """
+        logger.info(f"加载测试配置: {file_path}")
         with open(file_path, "r", encoding="utf-8") as f:
             return yaml.safe_load(f)
 
@@ -36,6 +40,7 @@ class DataLoader:
         """
         file_list = []
         files = os.listdir(self.test_folder)
+        logger.info(f"加载目录下的所有测试配置文件: {self.test_folder}")
         for file in files:
             if file.endswith("yaml"):
                 file_list.append(os.path.join(self.test_folder, file))
