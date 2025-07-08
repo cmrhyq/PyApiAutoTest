@@ -1,3 +1,5 @@
+from typing import Dict
+
 import requests
 from common.log import Logger
 
@@ -6,13 +8,16 @@ logger = Logger().get_logger()
 
 
 class HttpClient:
-    def __init__(self, timeout=10):
+    def __init__(self, base_url: str, default_headers: Dict[str, str] = None, timeout: int = 30):
         """
         初始化 HTTP 客户端
         :param timeout: 请求超时时间，默认 10 秒
         """
+        self.base_url = base_url.rstrip('/')
+        self.default_headers = default_headers or {}
         self.timeout = timeout
         self.session = requests.Session()
+        self.session.headers.update(self.default_headers)
 
     def _request(self, method, url, **kwargs):
         """
@@ -23,12 +28,30 @@ class HttpClient:
         :return: 响应对象或 None
         """
         try:
+            """发送HTTP请求"""
+            url = f"{self.base_url}{url}"
+
+            # 合并headers
+            headers = self.default_headers.copy()
+            if 'headers' in kwargs:
+                headers.update(kwargs['headers'])
+                kwargs['headers'] = headers
+
+            # 设置超时
             kwargs.setdefault('timeout', self.timeout)
+            # 发送请求
             response = self.session.request(method, url, **kwargs)
-            response.raise_for_status()  # 检查响应状态码
+
+            logger.info(f'Request URL: {url}')
+            logger.info(f'Request Method: {method}')
+            logger.info(f'Request Headers: {kwargs.get("headers", {})}')
+            logger.info(f'Request Body: {kwargs.get("json", {})}')
+            logger.info(f'Response Status Code: {response.status_code}')
+            logger.info(f'Response Body: {response.json()}')
+
             return response
         except requests.exceptions.RequestException as e:
-            logger.error(f'请求出错: {e}')
+            logger.error(f'发送请求出错: {e}')
             return None
 
     def get(self, url, params=None, **kwargs):

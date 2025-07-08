@@ -20,7 +20,7 @@ from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from smtplib import SMTP, SMTP_SSL
 from common.log import Logger
-from config.ini.read_config_ini import ReadConfigIni
+from core.loader.data_loader import DataLoader
 
 logger = Logger().get_logger()
 
@@ -37,11 +37,11 @@ class SendEmail:
         :param password: 邮箱授权码
         :param use_ssl: 是否使用SSL连接，默认True
         """
-        self.conf = ReadConfigIni()
-        self.host = self.conf.mail_host
-        self.port = self.conf.mail_port
-        self.sender = self.conf.mail_sender
-        self.password = self.conf.mail_license
+        self.conf = DataLoader().get_current_env_config()
+        self.host = self.conf["email"]["host"]
+        self.port = self.conf["email"]["port"]
+        self.sender = self.conf["email"]["sender"]
+        self.password = self.conf["email"]["license"]
         self.use_ssl = use_ssl
         self.smtp = SMTP_SSL(self.host, self.port) if use_ssl else SMTP(self.host, self.port)
         self.message = MIMEMultipart('alternative')

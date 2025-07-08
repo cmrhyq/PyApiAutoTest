@@ -4,8 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="1. 新增配置数据加载器&#10;2. 新增环境配置文件&#10;3. 新增测试数据配置文件&#10;4. 新增测试运行器">
+    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="merge">
+      <change afterPath="$PROJECT_DIR$/core/validators/response_validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_config.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/manager/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/email/send_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/email/send_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/env_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/env_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ini/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/validators/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ini/read_config_ini.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/manager_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/manager/manager_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/yaml/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/yaml/read_config_yaml.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assertion/assertion.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/validators/assertion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/http/http_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/http/http_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/loader/data_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/loader/data_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/runner/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/runner/test_runner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/api_test_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/api_test_data.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/api/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/api/user_api.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/modules/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/modules/post_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/modules/user_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_base.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,14 +100,14 @@
       <recent name="C:\Users\EDY\Desktop\Code\PyApiAutoTest\data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="I:\Code\4.python_code\PyApiAutoTest\core\validators" />
+      <recent name="I:\Code\4.python_code\PyApiAutoTest\config\manager" />
       <recent name="C:\Users\EDY\Desktop\Code\PyApiAutoTest\data" />
       <recent name="C:\Users\EDY\Desktop\Code\PyApiAutoTest\config" />
       <recent name="C:\Users\EDY\Desktop\Code\PyApiAutoTest" />
-      <recent name="I:\Code\4.python_code\ApiAutomationTest\core" />
-      <recent name="I:\Code\4.python_code\ApiAutomationTest\test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.data_loader">
+  <component name="RunManager" selected="Python.run_test">
     <configuration name="data_loader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyApiAutoTest" />
       <option name="ENV_FILES" value="" />
@@ -93,7 +121,37 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/loader/data_loader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="run_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="UiAutomationTestInit" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <EXTENSION ID="software.aws.toolkits.jetbrains.core.execution.PythonAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
+      </EXTENSION>
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -137,6 +195,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.run_test" />
       <item itemvalue="Python.data_loader" />
       <item itemvalue="Python tests.pytest for batch_test_example.TestBatchAPIs" />
       <item itemvalue="Python tests.Python tests for test.modules.user_test.TestUser" />
@@ -144,6 +203,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.data_loader" />
+        <item itemvalue="Python.run_test" />
         <item itemvalue="Python tests.pytest for batch_test_example.TestBatchAPIs" />
         <item itemvalue="Python tests.Python tests for test.modules.user_test.TestUser" />
       </list>
@@ -152,7 +212,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
+        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
       </set>
     </attachedChunks>
   </component>
@@ -177,6 +238,9 @@
       <workItem from="1751734875821" duration="1556000" />
       <workItem from="1751778963083" duration="9299000" />
       <workItem from="1751819689269" duration="70000" />
+      <workItem from="1751900101567" duration="133000" />
+      <workItem from="1751900241927" duration="211000" />
+      <workItem from="1751900553651" duration="5875000" />
     </task>
     <task id="LOCAL-00001" summary="日志">
       <option name="closed" value="true" />
@@ -258,13 +322,13 @@
       <option name="project" value="LOCAL" />
       <updated>1745251294543</updated>
     </task>
-    <task id="LOCAL-00011" summary="1. 新增配置数据加载器&#10;2. 新增环境配置文件&#10;3. 新增测试数据配置文件&#10;4. 新增测试运行器">
+    <task id="LOCAL-00011" summary="merge">
       <option name="closed" value="true" />
-      <created>1751880903190</created>
+      <created>1751897415138</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1751880903190</updated>
+      <updated>1751897415138</updated>
     </task>
     <option name="localTasksCounter" value="12" />
     <servers />
@@ -281,11 +345,14 @@
     <MESSAGE value="更新获取pc端ua和phone端ua的方法" />
     <MESSAGE value="测试报告" />
     <MESSAGE value="更新测试用例" />
-    <MESSAGE value="1. 新增配置数据加载器&#10;2. 新增环境配置文件&#10;3. 新增测试数据配置文件&#10;4. 新增测试运行器" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. 新增配置数据加载器&#10;2. 新增环境配置文件&#10;3. 新增测试数据配置文件&#10;4. 新增测试运行器" />
+    <MESSAGE value="项目初始结构" />
+    <MESSAGE value="merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ApiAutomationTest$cli.coverage" NAME="cli Coverage Results" MODIFIED="1751816452503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyApiAutoTest$data_loader.coverage" NAME="data_loader Coverage Results" MODIFIED="1751906804054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/loader" />
+    <SUITE FILE_PATH="coverage/PyApiAutoTest$run_test.coverage" NAME="run_test Coverage Results" MODIFIED="1751900011926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ApiAutomationTest$.coverage" NAME=" Coverage Results" MODIFIED="1751472253280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/case" />
     <SUITE FILE_PATH="coverage/UiAutomationTestInit$web_driver_singleton.coverage" NAME="web_driver_singleton Coverage Results" MODIFIED="1745166198541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/singleton" />
     <SUITE FILE_PATH="coverage/ApiAutomationTest$pytest_for_batch_test_example_TestBatchAPIs.coverage" NAME="pytest for batch_test_example.TestBatchAPIs Coverage Results" MODIFIED="1751814050451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/modules" />
