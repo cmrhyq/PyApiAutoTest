@@ -18,19 +18,35 @@ test_cases:
       method: "GET"
       endpoint: "/posts"
       expected_status: 200
-      response_contains:
-        - "id"
-        - "title"
-        - "body"
+      response_schema:
+        type: "array"
+        properties:
+          userId:
+            type: "integer"
+          id:
+            type: "integer"
+          title:
+            type: "string"
+          body:
+            type: "string"
 
     - name: "获取文章1"
       description: "获取文章详情"
       method: "GET"
-      endpoint: "/posts/1"
-      expected_status: 200
-      expected_response:
+      endpoint: "/posts/{id}"
+      path_params:
         id: 1
-      response_contains:
-        - "id"
-        - "title"
-        - "body"
+      expected_status: 200
+      response_schema:
+        type: "object"
+        properties:
+          userId:
+            type: "integer"
+          id:
+            type: "integer"
+          title:
+            type: "string"
+          body:
+            type: "string"
+      response_extract:
+        title: "title"

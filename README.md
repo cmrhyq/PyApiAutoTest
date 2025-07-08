@@ -84,7 +84,9 @@ test_cases:
   - name: "获取用户信息"
     description: "测试获取用户信息接口"
     method: "GET"                    # HTTP方法: GET, POST, PUT, DELETE, PATCH
-    endpoint: "/api/users/123"       # API路径
+    endpoint: "/api/users/{id}"      # API路径
+    path_params:
+      id: 123
     headers:                         # 自定义请求头（可选）
       Custom-Header: "test-value"
     params:                          # URL参数（可选）
@@ -93,6 +95,8 @@ test_cases:
     expected_response:               # 期望的响应内容（可选）
       user_id: 123
       username: "testuser"
+    response_extract:
+      user_id: "$[0].id"             # 提取响应中的 user.id 字段
 ```
 
 ## 🧪 测试用例配置详解
@@ -111,12 +115,14 @@ test_cases:
 | 字段 | 说明 | 示例 |
 |------|------|------|
 | `description` | 测试描述 | "测试获取用户信息接口" |
+| `path_params` | 路径参数 | `id: 123` |
 | `headers` | 自定义请求头 | `Custom-Header: "value"` |
 | `params` | URL参数 | `page: 1` |
 | `body` | 请求体（JSON） | `{"name": "test"}` |
 | `expected_response` | 期望响应内容 | `{"status": "success"}` |
 | `response_contains` | 响应必须包含的文本 | `["success", "user"]` |
 | `response_schema` | 响应格式验证 | JSON Schema |
+| `response_extract` | 响应字段提取 | `user_id: "$.data.user.id"` |
 
 ## 📋 常见测试用例模板
 
@@ -158,7 +164,9 @@ test_cases:
 - name: "更新用户信息"
   description: "更新用户的基本信息"
   method: "PUT"
-  endpoint: "/api/users/123"
+  endpoint: "/api/users/{id}"
+  path_params:
+    id: 123
   body:
     username: "updateduser"
     email: "updated@example.com"
@@ -229,6 +237,28 @@ response_schema:
     email:
       type: "string"
   required: ["user_id", "username"]
+```
+
+## 📂 响应提取
+在测试用例中，你可以提取响应中的特定字段，以便在后续测试中使用：
+
+### 1. 提取嵌套字段
+```yaml
+response_extract:
+  user_id: "data.user.id"  # 提取响应中的 user.id 字段
+  username: "data.user.name"  # 提取响应中的 user.name 字段
+```
+
+### 2. 提取顶层字段
+```yaml
+response_extract:
+  user_id: "userId"  # 提取响应中的 user.id 字段
+```
+
+### 3. JSONPath 提取
+```yaml
+response_extract:
+  user_id: "$[0].id"  # 提取响应中的 user.id 字段
 ```
 
 ## 🌍 环境管理

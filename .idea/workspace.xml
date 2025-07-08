@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="update gitgnore">
+    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="1. 新增全局缓存工具类以及使用文档">
+      <change afterPath="$PROJECT_DIR$/core/patterns/singleton/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/patterns/singleton/cache_example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/patterns/singleton/cache_singleton.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
@@ -371,7 +374,8 @@
     <MESSAGE value="项目初始结构" />
     <MESSAGE value="merge" />
     <MESSAGE value="update gitgnore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update gitgnore" />
+    <MESSAGE value="1. 新增全局缓存工具类以及使用文档" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. 新增全局缓存工具类以及使用文档" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ApiAutomationTest$cli.coverage" NAME="cli Coverage Results" MODIFIED="1751816452503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

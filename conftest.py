@@ -8,6 +8,7 @@ from pathlib import Path
 
 from core.http.http_client import HttpClient
 from core.loader.data_loader import DataLoader
+from core.patterns.singleton import CacheSingleton
 
 
 @pytest.fixture(scope="session")
@@ -39,8 +40,14 @@ def api_client(data_loader):
 
 
 @pytest.fixture(scope="session")
+def cache():
+    return CacheSingleton()
+
+
+@pytest.fixture(scope="session")
 def test_cases(data_loader):
     """测试用例fixture"""
+    # TODO 实现读取目录下的所有的测试用例文件然后再去执行测试
     cases = data_loader.get_test_cases("I:\\Code\\4.python_code\\PyApiAutoTest\\data\\api_test_data.yaml")
 
     # 附加测试用例配置信息

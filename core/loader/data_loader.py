@@ -1,3 +1,4 @@
+import json
 import os
 from typing import Dict, Any, List
 
@@ -63,8 +64,47 @@ class DataLoader:
 
 
 if __name__ == '__main__':
+    response = json.loads("""
+{
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipitsuscipit recusandae consequuntur expedita et cumreprehenderit molestiae ut ut quas totamnostrum rerum est autem sunt rem eveniet architecto"
+}
+    """)
+    response_data = response.json() if hasattr(response, 'json') else response
     loader = DataLoader()
-    # file_list = loader.load_test_file()
-    # for file in file_list:
-    #     print(loader.get_test_cases(file))
-    print(loader.get_current_env_config())
+    file_list = loader.load_test_file()
+    for file in file_list:
+        cases = loader.get_test_cases(file)
+        for case in cases:
+            response_extract = case.get("response_extract", {})
+            extracted_data = {}
+            for key, extract_path in response_extract.items():
+                print(type(response_data))
+                # 处理嵌套路径，例如 "data.user.id"
+                if isinstance(extract_path, str) and '.' in extract_path:
+                    parts = extract_path.split('.')
+                    value = response_data
+                    for part in parts:
+                        if isinstance(value, dict) and part in value:
+                            value = value[part]
+                        else:
+                            value = None
+                            break
+                # 处理直接字段
+                elif isinstance(extract_path, str):
+                    value = response_data.get(extract_path)
+                # 处理JMESPath或JSONPath表达式（如果需要）
+                elif isinstance(extract_path, dict) and 'jmespath' in extract_path:
+                    # 这里可以添加JMESPath支持，需要安装jmespath库
+                    # import jmespath
+                    # value = jmespath.search(extract_path['jmespath'], response_data)
+                    logger.warning(f"JMESPath提取未实现: {extract_path}")
+                    value = None
+                else:
+                    value = None
+
+                # 存储提取的值
+                extracted_data[key] = value
+                print(extracted_data)
