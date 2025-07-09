@@ -22,6 +22,7 @@ def run_tests():
         "test/",
         "-v",  # 详细输出
         "--alluredir=" + allure_results_dir,  # Allure结果目录
+        "--self-contained-html",  # 自包含HTML报告
         "--tb=short",  # 简短的traceback
         "--clean-alluredir",  # 清理之前的allure结果
     ]
@@ -77,10 +78,10 @@ def generate_allure_report(results_dir, report_dir):
     """生成Allure报告"""
     try:
         # 检查allure命令是否可用
-        subprocess.run(["C:\\Users\\EDY\\Desktop\\TestUtils\\allure\\bin\\allure.bat", "--version"], capture_output=True, check=True)
+        subprocess.run(["E:\\develop\\allure\\bin\\allure.bat", "--version"], capture_output=True, check=True)
 
         # 生成报告
-        cmd = ["C:\\Users\\EDY\\Desktop\\TestUtils\\allure\\bin\\allure.bat", "generate", results_dir, "-o", report_dir, "--clean"]
+        cmd = ["E:\\develop\\allure\\bin\\allure.bat", "generate", results_dir, "-o", report_dir, "--clean"]
         subprocess.run(cmd, capture_output=True, check=True)
 
         print("✅ Allure报告生成成功！")
