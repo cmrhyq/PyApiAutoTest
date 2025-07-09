@@ -41,7 +41,7 @@ def api_client(data_loader):
 @pytest.fixture(scope="session")
 def test_cases(data_loader):
     """测试用例fixture"""
-    cases = data_loader.get_test_cases("I:\\Code\\4.python_code\\PyApiAutoTest\\data\\api_test_data.yaml")
+    cases = data_loader.get_test_cases("C:\\Users\\EDY\\Desktop\\Code\\PyApiAutoTest\\data\\api_test_data.yaml")
 
     # 附加测试用例配置信息
     allure.attach(

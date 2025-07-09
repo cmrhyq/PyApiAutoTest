@@ -9,15 +9,21 @@ logger = Logger().get_logger()
 
 @allure.feature("API自动化测试")
 class TestAPI:
-    """API测试类"""
+    """
+    API测试类
+    """
 
     def test_api_cases(self, api_client, test_cases):
-        """执行所有API测试用例"""
+        """
+        执行所有API测试用例
+        """
         for case in test_cases:
             self._execute_test_case(api_client, case)
 
     def _execute_test_case(self, api_client, case):
-        """执行单个测试用例"""
+        """
+        执行单个测试用例
+        """
         # 提取测试用例信息
         name = case.get('name', 'Unknown')
         description = case.get('description', '')

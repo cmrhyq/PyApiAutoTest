@@ -19,17 +19,12 @@ def run_tests():
     if not os.path.exists(allure_report_dir):
         os.makedirs(allure_report_dir)
 
-    # 创建reports目录（备用HTML报告）
-    if not os.path.exists("reports"):
-        os.makedirs("reports")
-
     # 构建pytest命令
     cmd = [
         "pytest",
         "test/",
         "-v",  # 详细输出
         "--alluredir=" + allure_results_dir,  # Allure结果目录
-        "--self-contained-html",  # 自包含HTML报告
         "--tb=short",  # 简短的traceback
         "--clean-alluredir",  # 清理之前的allure结果
     ]
@@ -72,7 +67,7 @@ def run_tests():
         print(f"📊 Allure报告已生成: {allure_report_dir}/index.html")
 
         # 尝试打开Allure报告
-        # try_open_allure_report(allure_report_dir)
+        try_open_allure_report(allure_report_dir)
 
     except Exception as e:
         print(f"❌ 运行测试时发生错误: {str(e)}")
@@ -85,10 +80,10 @@ def generate_allure_report(results_dir, report_dir):
     """生成Allure报告"""
     try:
         # 检查allure命令是否可用
-        subprocess.run(["E:\\develop\\allure\\bin\\allure.bat", "--version"], capture_output=True, check=True)
+        subprocess.run(["C:\\Users\\EDY\\Desktop\\TestUtils\\allure\\bin\\allure.bat", "--version"], capture_output=True, check=True)
 
         # 生成报告
-        cmd = ["E:\\develop\\allure\\bin\\allure.bat", "generate", results_dir, "-o", report_dir, "--clean"]
+        cmd = ["C:\\Users\\EDY\\Desktop\\TestUtils\\allure\\bin\\allure.bat", "generate", results_dir, "-o", report_dir, "--clean"]
         subprocess.run(cmd, capture_output=True, check=True)
 
         print("✅ Allure报告生成成功！")

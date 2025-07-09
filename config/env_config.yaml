@@ -1,7 +1,7 @@
 current_env: "dev"
 environments:
   dev:
-    base_url: "https://jsonplaceholder.typicode.com"
+    base_url: "http://openapi.portal.paas.zzpod8-32-101-20030.zhuzhou.4a.cmit.cloud:20030"
     timeout: 30
     headers:
       Content-Type: "application/json"

@@ -1,36 +1,63 @@
-#test_cases:
-#  - name: "登陆"
-#    description: "生成jwt-token 平台管理员"
-#    method: "POST"
-#    endpoint: "/apisix/plugin/jwt/sign"
-#    body:
-#      userName: "huangyuqiao"
-#      password: "PJ2025@ceshi"
-#      tenantCode: "tenant_admin"
-#      expireTime: 18000000
-#    expected_status: 200
-#    expected_response:
-#      - "token"
-
 test_cases:
-    - name: "获取文章"
-      description: "获取文章列表"
-      method: "GET"
-      endpoint: "/posts"
-      expected_status: 200
-      response_contains:
-        - "id"
-        - "title"
-        - "body"
+  - name: "平台管理员登陆"
+    description: "生成jwt-token 平台管理员"
+    method: "POST"
+    endpoint: "/apisix/plugin/jwt/sign"
+    body:
+      userName: "huangyuqiao"
+      password: "PJ2025@ceshi"
+      tenantCode: "tenant_admin"
+      expireTime: 18000000
+    expected_status: 200
+    response_schema:
+      type: "object"
+      properties:
+        code:
+          type: "integer"
+        data:
+          type: "string"
+        msg:
+          type: "string"
 
-    - name: "获取文章1"
-      description: "获取文章详情"
-      method: "GET"
-      endpoint: "/posts/1"
-      expected_status: 200
-      expected_response:
-        id: 1
-      response_contains:
-        - "id"
-        - "title"
-        - "body"
+  - name: "租户管理员登陆"
+    description: "生成jwt-token 租户管理员"
+    method: "POST"
+    endpoint: "/apisix/plugin/jwt/sign"
+    body:
+      userName: "huangyuqiao"
+      password: "PJ2025@ceshi"
+      tenantCode: "tenant_admin"
+      expireTime: 18000000
+    expected_status: 200
+    response_schema:
+      type: "object"
+      properties:
+        code:
+          type: "integer"
+        data:
+          type: "string"
+        msg:
+          type: "string"
+
+#test_cases:
+#    - name: "获取文章"
+#      description: "获取文章列表"
+#      method: "GET"
+#      endpoint: "/posts"
+#      expected_status: 200
+#      response_contains:
+#        - "id"
+#        - "title"
+#        - "body"
+#
+#    - name: "获取文章1"
+#      description: "获取文章详情"
+#      method: "GET"
+#      endpoint: "/posts/1"
+#      expected_status: 200
+#      expected_response:
+#        id: 1
+#      response_contains:
+#        - "id"
+#        - "title"
+#        - "body"
