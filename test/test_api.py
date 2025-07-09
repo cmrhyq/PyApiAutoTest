@@ -1,5 +1,6 @@
 import allure
 import json
+import jmespath
 
 from common.log import Logger
 from core.validators.response_validator import ResponseValidator
@@ -9,33 +10,34 @@ logger = Logger().get_logger()
 
 @allure.feature("API自动化测试")
 class TestAPI:
-    """
-    API测试类
-    """
-
-    def test_api_cases(self, api_client, test_cases):
-        """
-        执行所有API测试用例
-        """
+    """API测试类"""
+    # TODO 从测试报告上看，要把每一个接口当成一个接口来执行，不能当成一个步骤来执行
+    def test_api_cases(self, api_client, test_cases, cache):
+        """执行所有API测试用例"""
         for case in test_cases:
-            self._execute_test_case(api_client, case)
+            self._execute_test_case(api_client, case, cache)
 
-    def _execute_test_case(self, api_client, case):
-        """
-        执行单个测试用例
-        """
+    def _execute_test_case(self, api_client, case, cache):
+        """执行单个测试用例"""
         # 提取测试用例信息
         name = case.get('name', 'Unknown')
         description = case.get('description', '')
         method = case.get('method', 'GET').upper()
         endpoint = case.get('endpoint', '')
+        path_params = case.get('path_params', [])
         headers = case.get('headers', {})
         params = case.get('params', {})
         body = case.get('body', None)
-        expected_status = case.get('expected_status', 200)
-        expected_response = case.get('expected_response', None)
-        response_contains = case.get('response_contains', [])
-        response_schema = case.get('response_schema', None)
+        response_extract = case.get('response_extract', {})
+        # expected_status = case.get('expected_status', 200)
+        # expected_response = case.get('expected_response', None)
+        # response_contains = case.get('response_contains', [])
+        # response_schema = case.get('response_schema', None)
+
+        # 如果路径中有参数，替换路径参数
+        # TODO 实现 {name} 这类参数可以从缓存中读取或者从配置中中读取
+        for param in path_params:
+            endpoint = endpoint.replace(f"{{{param}}}", str(path_params.get(param, '')))
 
         # 设置Allure报告信息
         allure.dynamic.title(name)
@@ -57,7 +59,6 @@ class TestAPI:
             if body:
                 kwargs['json'] = body
 
-            logger.info(kwargs)
             # 发送请求
             response = api_client._request(method, endpoint, **kwargs)
 
@@ -67,6 +68,12 @@ class TestAPI:
         # 验证响应
         with allure.step("验证响应结果"):
             self._validate_response(response, case, name)
+
+        if response_extract:
+            with allure.step("提取响应结果"):
+                self._extract_response(response, response_extract, cache)
+
+        logger.info(f"测试用例 '{name}' 执行完成")
 
     def _get_severity(self, method):
         """根据HTTP方法获取严重程度"""
@@ -132,6 +139,7 @@ class TestAPI:
         with allure.step(f"验证状态码为{expected_status}"):
             assert ResponseValidator.validate_status_code(response, expected_status), \
                 f"测试用例 '{test_name}' 失败: 期望状态码 {expected_status}, 实际状态码 {response.status_code}"
+            logger.info(f"测试用例 '{test_name}': 期望状态码 {expected_status}, 实际状态码 {response.status_code}")
 
         # 验证响应内容
         if expected_response is not None:
@@ -143,12 +151,14 @@ class TestAPI:
                 )
                 assert ResponseValidator.validate_response_content(response, expected_response), \
                     f"测试用例 '{test_name}' 失败: 响应内容不匹配\n期望: {expected_response}\n实际: {response.text}"
+                logger.info(f"测试用例 '{test_name}': 响应内容不匹配\n期望: {expected_response}\n实际: {response.text}")
 
         # 验证响应包含内容
         if response_contains:
             with allure.step(f"验证响应包含内容: {response_contains}"):
                 assert ResponseValidator.validate_response_contains(response, response_contains), \
                     f"测试用例 '{test_name}' 失败: 响应内容不包含期望的文本"
+                logger.error(f"测试用例 '{test_name}': 响应内容不包含期望的文本")
 
         # 验证响应schema
         if response_schema:
@@ -160,3 +170,49 @@ class TestAPI:
                 )
                 assert ResponseValidator.validate_response_schema(response, response_schema), \
                     f"测试用例 '{test_name}' 失败: 响应schema验证失败"
+                logger.error(f"测试用例 '{test_name}': 响应schema验证失败")
+
+    def _extract_response(self, response, response_extract, cache):
+        """根据规则提取响应数据"""
+        extracted_data = {}
+
+        try:
+            # 尝试获取JSON响应
+            response_data = response.json() if hasattr(response, 'json') else response
+
+            # 遍历需要提取的字段
+            for key, extract_path in response_extract.items():
+                # 处理嵌套路径，例如 "data.user.id"
+                if isinstance(extract_path, str) and '.' in extract_path:
+                    parts = extract_path.split('.')
+                    value = response_data
+                    for part in parts:
+                        if isinstance(value, dict) and part in value:
+                            value = value[part]
+                        else:
+                            value = None
+                            break
+                # 处理直接字段
+                elif isinstance(extract_path, str):
+                    value = response_data.get(extract_path)
+                # 处理JMESPath或JSONPath表达式（如果需要）
+                elif isinstance(extract_path, dict) and 'jmespath' in extract_path:
+                    value = jmespath.search(extract_path['jmespath'], response_data)
+                else:
+                    value = None
+
+                # 存储提取的值
+                extracted_data[key] = value
+                # 缓存响应数据
+                cache.set(key, value)
+
+        except Exception as e:
+            logger.error(f"提取响应数据时出错: {e}")
+
+        allure.attach(
+            json.dumps(extracted_data, ensure_ascii=False, indent=2),
+            "提取的响应数据",
+            allure.attachment_type.JSON
+        )
+
+        return extracted_data

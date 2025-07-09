@@ -1,8 +1,5 @@
 import os
-import sys
 import subprocess
-from datetime import datetime
-import locale
 
 
 def run_tests():
