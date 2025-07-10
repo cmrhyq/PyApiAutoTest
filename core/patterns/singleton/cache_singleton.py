@@ -98,3 +98,20 @@ class CacheSingleton:
                     del self._cache[key]
                     logger.debug(f"Cache expired: {key}")
         return result
+
+    def replace_placeholder(self, data_str):
+        """替换字符串中的 $variable_name$ 占位符"""
+        if not isinstance(data_str, str):
+            return data_str  # 只处理字符串
+
+        import re
+        def replace_match(match):
+            var_name = match.group(1)
+            var_value = self.get(var_name)
+            if var_value is None:
+                # 如果变量不存在，可能需要报错或者返回原始占位符
+                logger.error(f"Placeholder ${var_name}$ found but variable not set.")
+                return match.group(0)  # 返回原始占位符，避免请求错误
+            return str(var_value)  # 确保返回字符串
+
+        return re.sub(r'\$(\w+)\$', replace_match, data_str)
