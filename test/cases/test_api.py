@@ -29,13 +29,9 @@ class TestAPI:
         params = case.get('params', {})
         body = case.get('body', None)
         response_extract = case.get('response_extract', {})
-        # expected_status = case.get('expected_status', 200)
-        # expected_response = case.get('expected_response', None)
-        # response_contains = case.get('response_contains', [])
-        # response_schema = case.get('response_schema', None)
 
         # 如果路径中有参数，替换路径参数
-        # TODO 实现 {name} 这类参数可以从缓存中读取或者从配置中中读取
+        # TODO 实现 {name} 这类参数可以从缓存中读取或者从配置中读取
         for param in path_params:
             endpoint = endpoint.replace(f"{{{param}}}", str(path_params.get(param, '')))
 

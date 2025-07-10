@@ -58,7 +58,7 @@ test_cases:
             type: "string"
 
     - name: "获取文章1"
-      description: "获取文章详情"
+      description: "获取文章1的详情"
       method: "GET"
       endpoint: "/posts/{id}"
       path_params:
