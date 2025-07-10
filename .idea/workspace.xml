@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="1. 改动">
-      <change afterPath="$PROJECT_DIR$/common/http/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/http/request_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/validators/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/validators/assert_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/flow_chart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_runner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/http/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/excel/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/http/http_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/http/http_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/cache_singleton.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/patterns/singleton/cache_singleton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/validators/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/excel/excel_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/validators/assertion.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/validators/assertion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/validators/response_validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/validators/response_validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_api.py" afterDir="false" />
-    </list>
+    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="新增测试用例表格" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -257,7 +239,7 @@
       <workItem from="1751900241927" duration="211000" />
       <workItem from="1751900553651" duration="5875000" />
       <workItem from="1752073056027" duration="1794000" />
-      <workItem from="1752158051299" duration="7390000" />
+      <workItem from="1752158051299" duration="7901000" />
     </task>
     <task id="LOCAL-00001" summary="日志">
       <option name="closed" value="true" />
@@ -395,7 +377,79 @@
       <option name="project" value="LOCAL" />
       <updated>1752074877396</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="新增断言工具类">
+      <option name="closed" value="true" />
+      <created>1752166157985</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166157985</updated>
+    </task>
+    <task id="LOCAL-00019" summary="移动代码">
+      <option name="closed" value="true" />
+      <created>1752166176292</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166176292</updated>
+    </task>
+    <task id="LOCAL-00020" summary="全局缓存器新增替换字符串中的占位符方法">
+      <option name="closed" value="true" />
+      <created>1752166211144</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166211144</updated>
+    </task>
+    <task id="LOCAL-00021" summary="移动代码位置">
+      <option name="closed" value="true" />
+      <created>1752166235992</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166235992</updated>
+    </task>
+    <task id="LOCAL-00022" summary="新增从excel文件读取测试用例方法">
+      <option name="closed" value="true" />
+      <created>1752166256420</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166256420</updated>
+    </task>
+    <task id="LOCAL-00023" summary="1. 新增excel测试用例字段说明&#10;2. 新增流程图">
+      <option name="closed" value="true" />
+      <created>1752166312663</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166312663</updated>
+    </task>
+    <task id="LOCAL-00024" summary="新增请求工具类">
+      <option name="closed" value="true" />
+      <created>1752166326855</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166326855</updated>
+    </task>
+    <task id="LOCAL-00025" summary="新增测试运行器">
+      <option name="closed" value="true" />
+      <created>1752166356595</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166356595</updated>
+    </task>
+    <task id="LOCAL-00026" summary="新增测试用例表格">
+      <option name="closed" value="true" />
+      <created>1752166372672</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1752166372672</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,7 +468,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="日志" />
-    <MESSAGE value="移动代码位置" />
     <MESSAGE value="改名" />
     <MESSAGE value="更新" />
     <MESSAGE value="更新selenium配置实体类名称" />
@@ -428,7 +481,16 @@
     <MESSAGE value="1. 新增请求路径可通过路径参数来替换成想要的值&#10;2. 新增响应字段提取" />
     <MESSAGE value="1. 新增需要屏蔽的内容" />
     <MESSAGE value="1. 改动" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. 改动" />
+    <MESSAGE value="新增断言工具类" />
+    <MESSAGE value="移动代码" />
+    <MESSAGE value="全局缓存器新增替换字符串中的占位符方法" />
+    <MESSAGE value="移动代码位置" />
+    <MESSAGE value="新增从excel文件读取测试用例方法" />
+    <MESSAGE value="1. 新增excel测试用例字段说明&#10;2. 新增流程图" />
+    <MESSAGE value="新增请求工具类" />
+    <MESSAGE value="新增测试运行器" />
+    <MESSAGE value="新增测试用例表格" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增测试用例表格" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ApiAutomationTest$cli.coverage" NAME="cli Coverage Results" MODIFIED="1751816452503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
