@@ -10,10 +10,14 @@ logger = Logger().get_logger()
 
 @allure.feature("API自动化测试")
 class TestAPI:
-    """API测试类"""
+    """
+    API测试类
+    """
     # TODO 从测试报告上看，要把每一个接口当成一个接口来执行，不能当成一个步骤来执行
     def test_api_cases(self, api_client, test_cases, cache):
-        """执行所有API测试用例"""
+        """
+        执行所有API测试用例
+        """
         for case in test_cases:
             self._execute_test_case(api_client, case, cache)
 
