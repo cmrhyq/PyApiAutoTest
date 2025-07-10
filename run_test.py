@@ -19,7 +19,7 @@ def run_tests():
     # 构建pytest命令
     cmd = [
         "pytest",
-        "test/",
+        "test/cases/",
         "-v",  # 详细输出
         "--alluredir=" + allure_results_dir,  # Allure结果目录
         "--tb=short",  # 简短的traceback
@@ -110,7 +110,7 @@ def run_tests_alternative(allure_results_dir, allure_report_dir):
     """备用运行方式"""
     try:
         # 直接使用os.system运行，避免编码问题
-        cmd = f'pytest test/ -v --alluredir={allure_results_dir} --self-contained-html --tb=short --clean-alluredir'
+        cmd = f'pytest test/cases/ -v --alluredir={allure_results_dir} --self-contained-html --tb=short --clean-alluredir'
         result = os.system(cmd)
 
         # 生成Allure报告
@@ -125,7 +125,7 @@ def run_tests_alternative(allure_results_dir, allure_report_dir):
 
     except Exception as e:
         print(f"❌ 备用运行方式也失败了: {str(e)}")
-        print("请尝试直接运行: pytest test/ -v --alluredir=allure-results")
+        print("请尝试直接运行: pytest test/cases/ -v --alluredir=allure-results")
 
 
 if __name__ == "__main__":

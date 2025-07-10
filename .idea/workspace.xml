@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="1. 新增全局缓存工具类以及使用文档">
-      <change afterPath="$PROJECT_DIR$/core/patterns/singleton/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/patterns/singleton/cache_example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/patterns/singleton/cache_singleton.py" afterDir="false" />
+    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="Merge branch 'main' of https://github.com/cmrhyq/PyApiAutoTest&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;conftest.py&#10;#&#9;data/api_test_data.yaml&#10;#&#9;test/test_api.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/loader/data_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/loader/data_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/patterns/singleton/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/api_test_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/api_test_data.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_api.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,30 +46,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for test_user.TestUser.test_user_creation.executor": "Run",
-    "Python tests.pytest for batch_test_example.TestBatchAPIs.executor": "Run",
-    "Python.cache_example.executor": "Run",
-    "Python.cli.executor": "Run",
-    "Python.data_loader.executor": "Run",
-    "Python.internet_utils.executor": "Run",
-    "Python.run_test.executor": "Run",
-    "Python.web_driver_singleton.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/EDY/Desktop/Code/PyApiAutoTest/data",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_user.TestUser.test_user_creation.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest for batch_test_example.TestBatchAPIs.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cache_example.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cli.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_loader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.internet_utils.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.web_driver_singleton.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/EDY/Desktop/Code/PyApiAutoTest/data&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\EDY\Desktop\Code\PyApiAutoTest\data" />
@@ -204,10 +194,10 @@
     </configuration>
     <list>
       <item itemvalue="Python.cache_example" />
-      <item itemvalue="Python.run_test" />
       <item itemvalue="Python.data_loader" />
-      <item itemvalue="Python tests.pytest for batch_test_example.TestBatchAPIs" />
+      <item itemvalue="Python.run_test" />
       <item itemvalue="Python tests.Python tests for test.modules.user_test.TestUser" />
+      <item itemvalue="Python tests.pytest for batch_test_example.TestBatchAPIs" />
     </list>
     <recent_temporary>
       <list>
@@ -222,8 +212,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
-        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
+        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
       </set>
     </attachedChunks>
   </component>
@@ -356,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751980858211</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Merge branch 'main' of https://github.com/cmrhyq/PyApiAutoTest&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;conftest.py&#10;#&#9;data/api_test_data.yaml&#10;#&#9;test/test_api.py">
+      <option name="closed" value="true" />
+      <created>1752023175270</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1752023175270</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
