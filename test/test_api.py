@@ -3,7 +3,7 @@ import json
 import jmespath
 
 from common.log import Logger
-from core.validators.response_validator import ResponseValidator
+from common.validators import ResponseValidator
 
 # 配置日志记录
 logger = Logger().get_logger()

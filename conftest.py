@@ -6,7 +6,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 
-from core.http.http_client import HttpClient
+from common.http.http_client import HttpClient
 from core.loader.data_loader import DataLoader
 from core.patterns.singleton import CacheSingleton
 
