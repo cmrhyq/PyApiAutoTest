@@ -9,6 +9,7 @@
 @Version 0.0.1
 @Description None
 """
+import configparser
 import mimetypes
 from pathlib import Path
 from typing import List, Union
@@ -20,9 +21,10 @@ from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from smtplib import SMTP, SMTP_SSL
 from common.log import Logger
-from core.loader.data_loader import DataLoader
 
-logger = Logger().get_logger()
+# 初始化日志和缓存
+logger_instance = Logger(name="test_runner")
+logger = logger_instance.get_logger()
 
 
 class SendEmail:
@@ -31,19 +33,16 @@ class SendEmail:
     def __init__(self, use_ssl: bool = True):
         """
         初始化邮件发送类
-        :param host: SMTP服务器地址
-        :param port: SMTP服务器端口
-        :param sender: 发件人邮箱
-        :param password: 邮箱授权码
         :param use_ssl: 是否使用SSL连接，默认True
         """
-        self.conf = DataLoader().get_current_env_config()
+        self.conf = configparser.ConfigParser()
+        self.conf.read('config/config.ini')
         self.host = self.conf["email"]["host"]
         self.port = self.conf["email"]["port"]
         self.sender = self.conf["email"]["sender"]
         self.password = self.conf["email"]["license"]
         self.use_ssl = use_ssl
-        self.smtp = SMTP_SSL(self.host, self.port) if use_ssl else SMTP(self.host, self.port)
+        self.smtp = SMTP_SSL(self.host, int(self.port)) if use_ssl else SMTP(self.host, int(self.port))
         self.message = MIMEMultipart('alternative')
         self._init_message()
 

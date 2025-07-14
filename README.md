@@ -1,31 +1,50 @@
-<div style="font-family: 'Kanit', sans-serif;text-align: center;border: 10px solid #fff;box-shadow: 1px 1px 2px #e6e6e6;background: linear-gradient(to left top, #11998e, #38ef7d); padding: 50px 0;">
-<div style="color: #fff;">
-    <h3 style="font-size: 25px;font-weight: 600;letter-spacing: 1px;text-transform: uppercase;margin: 0;">
-       Python API Automation Tes
-    </h3>
-    <span style="font-size: 16px;text-transform: capitalize;">
-    	Python API自动化测试框架
-    </span>
-</div>
-</div>
+# Python API 自动化测试框架
+
+一个功能强大、易于使用的API自动化测试框架，基于Python、Excel和Pytest，支持并行执行、灵活的断言、变量提取和依赖管理。
 
 ## 🎯 工具介绍
 
-这是一个基于 Python + pytest + requests 的 API 自动化测试工具，**专门设计给非技术人员使用**。你只需要会编辑 YAML
-配置文件就能轻松添加和管理 API 测试用例。
+这是一个基于 Python + pytest + requests + Excel 的 API 自动化测试工具，专为测试人员设计，具有以下特点：
+
+- **数据驱动**：使用Excel文件管理测试用例，无需编写代码即可创建新的测试
+- **并行执行**：支持多线程并行执行测试用例，提高测试效率
+- **智能依赖管理**：自动处理测试用例之间的依赖关系，确保正确的执行顺序
+- **变量提取与重用**：从响应中提取变量并在后续请求中使用
+- **灵活的断言**：支持多种断言类型，包括状态码、JSON路径、响应时间等
+- **详细的报告**：集成Allure报告，提供直观的测试结果展示
+- **重试机制**：自动重试失败的请求，提高测试稳定性
+- **日志增强**：结构化日志，支持异步写入和日志轮转
 
 ## 📁 项目结构
 
 ```
-api_test_tool/
-├── config/
-│   ├── test_config.yaml      # 🎯 测试配置（你主要编辑这个文件）
-│   └── env_config.yaml       # 🌍 环境配置
-├── tests/                    # 📋 测试代码（无需修改）
-├── utils/                    # 🛠️ 工具代码（无需修改）
-├── reports/                  # 📊 测试报告
-├── requirements.txt          # 📦 依赖包
-└── run_tests.py             # 🚀 运行入口
+ApiAutomationTest/
+├── common/                  # 通用组件
+│   ├── excel/              # Excel处理相关
+│   │   └── excel_parser.py # Excel解析器
+│   ├── http/               # HTTP请求相关
+│   │   ├── http_client.py  # HTTP客户端
+│   │   └── request_util.py # 请求工具
+│   ├── log/                # 日志相关
+│   │   └── logger.py       # 日志工具
+│   └── validators/         # 验证器相关
+│       └── assert_util.py  # 断言工具
+├── config/                 # 配置目录
+│   └── config.ini          # 配置文件
+├── core/                   # 核心功能
+│   └── patterns/           # 设计模式
+│       └── singleton.py    # 单例模式
+├── data/                   # 测试数据
+│   └── test_cases.xlsx     # 测试用例Excel文件
+├── reports/                # 测试报告
+│   ├── allure-results/     # Allure报告结果
+│   └── allure-report/      # Allure HTML报告
+├── utils/                  # 工具类
+│   └── test_case_generator.py # 测试用例生成工具
+├── run_tests.py            # 测试执行入口
+├── test_runner.py          # 测试运行器
+├── pytest.ini              # Pytest配置
+└── requirements.txt        # 项目依赖
 ```
 
 ## 🚀 快速开始
@@ -36,260 +55,294 @@ api_test_tool/
 pip install -r requirements.txt
 ```
 
-### 2. 配置环境
+### 2. 安装Allure（可选，用于生成报告）
 
-编辑 `config/env_config.yaml` 文件：
+- Windows: 使用Scoop或Chocolatey安装
+  ```bash
+  scoop install allure
+  # 或
+  choco install allure
+  ```
 
-```yaml
-environments:
-  dev:
-    base_url: "https://your-api-dev.com"
-    timeout: 30
-    headers:
-      Content-Type: "application/json"
-      Authorization: "Bearer your_token"
+- Mac: 使用Homebrew安装
+  ```bash
+  brew install allure
+  ```
 
-# 选择当前使用的环境
-current_env: "dev"
+- Linux: 使用包管理器安装
+  ```bash
+  sudo apt-add-repository ppa:qameta/allure
+  sudo apt-get update
+  sudo apt-get install allure
+  ```
+
+### 3. 配置环境
+
+编辑 `config/config.ini` 文件：
+
+```ini
+[API]
+base_url = https://jsonplaceholder.typicode.com
+timeout = 30
+max_retries = 3
+retry_delay = 1
+
+[LOG]
+level = INFO
+rotation = 20 MB
+retention = 10
+compression = zip
+
+[TEST]
+excel_file = data/test_cases.xlsx
+parallel_execution = false
+max_workers = 4
+
+[REPORT]
+allure_results_dir = ./reports/allure-results
+allure_report_dir = ./reports/allure-report
 ```
 
-### 3. 添加测试用例
+### 4. 添加测试用例
 
-编辑 `config/test_config.yaml` 文件，添加你的 API 测试用例。
+编辑 `data/test_cases.xlsx` 文件，按照模板添加你的 API 测试用例。
 
-### 4. 运行测试
+### 5. 运行测试
 
 ```bash
+# 运行所有测试
 python run_tests.py
+
+# 运行特定模块的测试
+python run_tests.py -m users
+
+# 并行执行测试
+python run_tests.py -p -w 4
+
+# 生成Allure报告
+python run_tests.py --report
 ```
 
 ## 📝 如何添加新的测试用例
 
-**重要：非技术人员只需要编辑 `config/test_config.yaml` 文件即可！**
+### 方法1：使用测试用例生成工具
 
-### 基本格式
+```bash
+# 创建单个测试用例
+python utils/test_case_generator.py create -n "获取用户列表" -m "users" -p "/users" --method GET
 
-```yaml
-test_cases:
-  - name: "测试用例名称"
-    description: "测试用例描述"
-    method: "HTTP方法"
-    endpoint: "/api/endpoint"
-    # 其他配置...
+# 生成完整的CRUD测试套件
+python utils/test_case_generator.py crud -r users -b /api/v1/
 ```
+
+### 方法2：手动编辑Excel文件
+
+打开 `data/test_cases.xlsx` 文件，按照模板添加测试用例。每行代表一个测试用例，包含以下字段：
 
 ### 完整示例
 
-```yaml
-test_cases:
-  - name: "获取用户信息"
-    description: "测试获取用户信息接口"
-    method: "GET"                    # HTTP方法: GET, POST, PUT, DELETE, PATCH
-    endpoint: "/api/users/{id}"      # API路径
-    path_params:
-      id: 123
-    headers: # 自定义请求头（可选）
-      Custom-Header: "test-value"
-    params: # URL参数（可选）
-      include_profile: true
-    expected_status: 200             # 期望的HTTP状态码
-    expected_response: # 期望的响应内容（可选）
-      user_id: 123
-      username: "testuser"
-    response_extract:
-      user_id: "$[0].id"             # 提取响应中的 user.id 字段
-```
+| test_case_id | module | name   | description  | method | path               | headers                              | params      | body                                          | extract_vars            | asserts                                                                                                      | pre_condition_tc | priority | tags             | is_run |
+|--------------|--------|--------|--------------|--------|--------------------|--------------------------------------|-------------|-----------------------------------------------|-------------------------|--------------------------------------------------------------------------------------------------------------|------------------|----------|------------------|--------|
+| TC0001       | users  | 获取用户列表 | 测试获取所有用户的API | GET    | /users             | {"Content-Type": "application/json"} | {"page": 1} |                                               | {"user_id": "$.id"}     | [{"type": "status_code", "expected": 200}]                                                                   |                  | P1       | smoke,regression | TRUE   |
+| TC0002       | users  | 创建用户   | 测试创建新用户      | POST   | /users             | {"Content-Type": "application/json"} |             | {"name": "John", "email": "john@example.com"} | {"new_user_id": "$.id"} | [{"type": "status_code", "expected": 201}, {"type": "jsonpath", "expression": "$.name", "expected": "John"}] |                  | P1       | regression       | TRUE   |
+| TC0003       | users  | 获取特定用户 | 测试获取特定用户信息   | GET    | /users/{{user_id}} | {"Content-Type": "application/json"} |             |                                               |                         | [{"type": "status_code", "expected": 200}]                                                                   | TC0001           | P2       | regression       | TRUE   |
 
 ## 🧪 测试用例配置详解
 
+测试用例通过Excel文件进行管理，每行代表一个测试用例，包含以下字段：
+
 ### 必填字段
 
-| 字段                | 说明     | 示例                             |
-|-------------------|--------|--------------------------------|
-| `name`            | 测试用例名称 | "获取用户信息"                       |
-| `method`          | HTTP方法 | "GET", "POST", "PUT", "DELETE" |
-| `endpoint`        | API路径  | "/api/users/123"               |
-| `expected_status` | 期望状态码  | 200, 201, 404, 500             |
+| 字段           | 说明                | 示例                     |
+|--------------|-------------------|------------------------|
+| test_case_id | 测试用例唯一ID          | TC0001                 |
+| module       | 模块名称              | users                  |
+| name         | 测试用例名称            | 获取用户列表                 |
+| method       | HTTP方法            | GET, POST, PUT, DELETE |
+| path         | API路径（不含base_url） | /users                 |
+| is_run       | 是否执行该测试用例         | TRUE                   |
 
 ### 可选字段
 
-| 字段                  | 说明        | 示例                          |
-|---------------------|-----------|-----------------------------|
-| `description`       | 测试描述      | "测试获取用户信息接口"                |
-| `path_params`       | 路径参数      | `id: 123`                   |
-| `headers`           | 自定义请求头    | `Custom-Header: "value"`    |
-| `params`            | URL参数     | `page: 1`                   |
-| `body`              | 请求体（JSON） | `{"name": "test"}`          |
-| `expected_response` | 期望响应内容    | `{"status": "success"}`     |
-| `response_contains` | 响应必须包含的文本 | `["success", "user"]`       |
-| `response_schema`   | 响应格式验证    | JSON Schema                 |
-| `response_extract`  | 响应字段提取    | `user_id: "$.data.user.id"` |
-
-## 📋 常见测试用例模板
+| 字段               | 说明             | 示例                                         |
+|------------------|----------------|--------------------------------------------|
+| description      | 测试用例详细描述       | 测试获取所有用户的API                               |
+| headers          | 请求头（JSON格式）    | {"Content-Type": "application/json"}       |
+| params           | 查询参数（JSON格式）   | {"page": 1}                                |
+| body             | 请求体（JSON格式）    | {"name": "John"}                           |
+| extract_vars     | 要提取的变量（JSON格式） | {"user_id": "$.id"}                        |
+| asserts          | 断言规则（JSON数组）   | [{"type": "status_code", "expected": 200}] |
+| pre_condition_tc | 前置条件测试用例ID     | TC0001                                     |
+| priority         | 优先级            | P0, P1, P2                                 |
+| tags             | 标签（逗号分隔）       | smoke,regression                           |
 
 ### 1. GET 请求 - 获取数据
 
-```yaml
-- name: "获取用户列表"
-  description: "获取所有用户列表"
-  method: "GET"
-  endpoint: "/api/users"
-  params:
-    page: 1
-    limit: 10
-  expected_status: 200
-  response_contains:
-    - "users"
-    - "total"
-```
+| test_case_id | module | name   | description | method | path   | headers                              | params                   | body | extract_vars           | asserts                                                                                          | pre_condition_tc | is_run |
+|--------------|--------|--------|-------------|--------|--------|--------------------------------------|--------------------------|------|------------------------|--------------------------------------------------------------------------------------------------|------------------|--------|
+| TC0001       | users  | 获取用户列表 | 获取所有用户列表    | GET    | /users | {"Content-Type": "application/json"} | {"page": 1, "limit": 10} |      | {"user_id": "$[0].id"} | [{"type": "status_code", "expected": 200}, {"type": "contains", "expected": ["users", "total"]}] |                  | TRUE   |
 
 ### 2. POST 请求 - 创建数据
 
-```yaml
-- name: "创建新用户"
-  description: "创建一个新用户"
-  method: "POST"
-  endpoint: "/api/users"
-  body:
-    username: "newuser"
-    email: "test@example.com"
-    password: "password123"
-  expected_status: 201
-  expected_response:
-    message: "User created successfully"
-```
+| test_case_id | module | name  | description | method | path   | headers                              | params | body                                                                            | extract_vars            | asserts                                                                                                                              | pre_condition_tc | is_run |
+|--------------|--------|-------|-------------|--------|--------|--------------------------------------|--------|---------------------------------------------------------------------------------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------|------------------|--------|
+| TC0002       | users  | 创建新用户 | 创建一个新用户     | POST   | /users | {"Content-Type": "application/json"} |        | {"username": "newuser", "email": "test@example.com", "password": "password123"} | {"new_user_id": "$.id"} | [{"type": "status_code", "expected": 201}, {"type": "jsonpath", "expression": "$.message", "expected": "User created successfully"}] |                  | TRUE   |
 
 ### 3. PUT 请求 - 更新数据
 
-```yaml
-- name: "更新用户信息"
-  description: "更新用户的基本信息"
-  method: "PUT"
-  endpoint: "/api/users/{id}"
-  path_params:
-    id: 123
-  body:
-    username: "updateduser"
-    email: "updated@example.com"
-  expected_status: 200
-  response_contains:
-    - "updated successfully"
-```
+| test_case_id | module | name   | description | method | path               | headers                              | params | body                                                        | extract_vars | asserts                                                                                                | pre_condition_tc | is_run |
+|--------------|--------|--------|-------------|--------|--------------------|--------------------------------------|--------|-------------------------------------------------------------|--------------|--------------------------------------------------------------------------------------------------------|------------------|--------|
+| TC0003       | users  | 更新用户信息 | 更新用户的基本信息   | PUT    | /users/{{user_id}} | {"Content-Type": "application/json"} |        | {"username": "updateduser", "email": "updated@example.com"} |              | [{"type": "status_code", "expected": 200}, {"type": "contains", "expected": ["updated successfully"]}] | TC0001           | TRUE   |
 
 ### 4. DELETE 请求 - 删除数据
 
-```yaml
-- name: "删除用户"
-  description: "删除指定用户"
-  method: "DELETE"
-  endpoint: "/api/users/123"
-  expected_status: 204
-  expected_response: null
-```
+| test_case_id | module | name | description | method | path               | headers                              | params | body | extract_vars | asserts                                    | pre_condition_tc | is_run |
+|--------------|--------|------|-------------|--------|--------------------|--------------------------------------|--------|------|--------------|--------------------------------------------|------------------|--------|
+| TC0004       | users  | 删除用户 | 删除指定用户      | DELETE | /users/{{user_id}} | {"Content-Type": "application/json"} |        |      |              | [{"type": "status_code", "expected": 204}] | TC0001           | TRUE   |
 
 ### 5. 带认证的请求
 
-```yaml
-- name: "获取用户私有信息"
-  description: "需要认证的接口"
-  method: "GET"
-  endpoint: "/api/users/profile"
-  headers:
-    Authorization: "Bearer your_specific_token"
-  expected_status: 200
-```
+| test_case_id | module | name     | description | method | path           | headers                                                                   | params | body | extract_vars | asserts                                    | pre_condition_tc | is_run |
+|--------------|--------|----------|-------------|--------|----------------|---------------------------------------------------------------------------|--------|------|--------------|--------------------------------------------|------------------|--------|
+| TC0005       | users  | 获取用户私有信息 | 需要认证的接口     | GET    | /users/profile | {"Content-Type": "application/json", "Authorization": "Bearer {{token}}"} |        |      |              | [{"type": "status_code", "expected": 200}] |                  | TRUE   |
 
 ## 🔍 响应验证方式
 
+在Excel测试用例中，通过`asserts`字段配置断言规则，支持多种断言类型：
+
 ### 1. 状态码验证
 
-```yaml
-expected_status: 200  # 必须返回200状态码
+```json
+[
+  {
+    "type": "status_code",
+    "expected": 200
+  }
+]
 ```
 
-### 2. 响应内容验证
+### 2. JSON路径验证
 
-```yaml
-expected_response:
-  user_id: 123
-  username: "testuser"
-  email: "test@example.com"
+```json
+[
+  {
+    "type": "jsonpath",
+    "expression": "$.data.name",
+    "expected": "John"
+  }
+]
 ```
 
 ### 3. 响应包含验证
 
-```yaml
-response_contains:
-  - "success"
-  - "user created"
-  - "123"
+```json
+[
+  {
+    "type": "contains",
+    "expected": [
+      "success",
+      "user created"
+    ]
+  }
+]
 ```
 
-### 4. 响应格式验证（JSON Schema）
+### 4. 响应时间验证
 
-```yaml
-response_schema:
-  type: "object"
-  properties:
-    user_id:
-      type: "integer"
-    username:
-      type: "string"
-    email:
-      type: "string"
-  required: [ "user_id", "username" ]
+```json
+[
+  {
+    "type": "response_time",
+    "expected": 1000,
+    "comparison": "less_than"
+  }
+]
+```
+
+### 5. 组合断言
+
+```json
+[
+  {
+    "type": "status_code",
+    "expected": 200
+  },
+  {
+    "type": "jsonpath",
+    "expression": "$.code",
+    "expected": 0
+  },
+  {
+    "type": "contains",
+    "expected": [
+      "success"
+    ]
+  },
+  {
+    "type": "response_time",
+    "expected": 1000,
+    "comparison": "less_than"
+  }
+]
 ```
 
 ## 📂 响应提取
 
-在测试用例中，你可以提取响应中的特定字段，以便在后续测试中使用：
+在测试用例中，你可以通过`extract_vars`字段提取响应中的特定字段，以便在后续测试中使用：
 
 ### 1. 提取嵌套字段
 
-```yaml
-response_extract:
-  user_id: "data.user.id"  # 提取响应中的 user.id 字段
-  username: "data.user.name"  # 提取响应中的 user.name 字段
+```json
+{
+  "user_id": "$.data.user.id",
+  "username": "$.data.user.name"
+}
 ```
 
 ### 2. 提取顶层字段
 
-```yaml
-response_extract:
-  user_id: "userId"  # 提取响应中的 user.id 字段
+```json
+{
+  "user_id": "$.userId"
+}
 ```
 
 ### 3. JSONPath 提取
 
-```yaml
-response_extract:
-  user_id: "$[0].id"  # 提取响应中的 user.id 字段
+```json
+{
+  "user_id": "$[0].id"
+}
 ```
 
 ## 🌍 环境管理
 
-在 `config/env_config.yaml` 中配置不同环境：
+在 `config/config.ini` 中配置不同环境：
 
-```yaml
-environments:
-  dev:
-    base_url: "https://api-dev.example.com"
-    headers:
-      Authorization: "Bearer dev_token"
+```ini
+[DEFAULT]
+timeout = 30
+max_retries = 3
+retry_delay = 1
 
-  test:
-    base_url: "https://api-test.example.com"
-    headers:
-      Authorization: "Bearer test_token"
+[DEV]
+base_url = https://api-dev.example.com
+auth_token = dev_token
 
-  prod:
-    base_url: "https://api.example.com"
-    headers:
-      Authorization: "Bearer prod_token"
+[TEST]
+base_url = https://api-test.example.com
+auth_token = test_token
 
-# 切换环境只需修改这里
-current_env: "dev"
+[PROD]
+base_url = https://api.example.com
+auth_token = prod_token
+
+# 当前环境配置
+[ENV]
+current = DEV
 ```
+
+切换环境只需修改 `[ENV]` 部分的 `current` 值。
 
 ## 📊 查看测试报告
 
@@ -306,37 +359,47 @@ reports/
 
 ### Q: 如何添加新的 API 测试？
 
-A: 只需在 `config/test_config.yaml` 文件的 `test_cases` 列表中添加新的测试用例即可。
+A: 有两种方法：1) 使用 `utils/test_case_generator.py` 工具生成测试用例；2) 直接编辑 `data/test_cases.xlsx` 文件添加新行。
 
 ### Q: 如何修改测试环境？
 
-A: 修改 `config/env_config.yaml` 文件中的 `current_env` 字段。
+A: 修改 `config/config.ini` 文件中的 `[ENV]` 部分的 `current` 值。
 
 ### Q: 测试失败了怎么办？
 
-A: 查看命令行输出和生成的 HTML 报告，找到失败的具体原因。
+A: 查看命令行输出和生成的 Allure 报告，找到失败的具体原因。报告位于 `reports/allure-report` 目录。
 
 ### Q: 如何测试需要登录的接口？
 
-A: 在环境配置中添加 Authorization 头，或在具体测试用例中添加 headers 字段。
+A: 创建一个登录测试用例，使用 `extract_vars` 提取 token，然后在后续测试用例的 `pre_condition_tc` 字段中引用该测试用例 ID。
 
-### Q: 可以测试哪些HTTP方法？
+### Q: 如何并行执行测试？
 
-A: 支持 GET, POST, PUT, DELETE, PATCH 等常见HTTP方法。
+A: 使用命令 `python run_tests.py -p -w 4` 启动并行执行，其中 `-w` 参数指定并行线程数。
+
+### Q: 如何处理测试用例之间的依赖关系？
+
+A: 在依赖测试用例的 `pre_condition_tc` 字段中填写前置测试用例的 ID，框架会自动处理执行顺序和变量传递。
+
+### Q: 如何在测试用例中使用动态数据？
+
+A: 可以使用变量占位符 `{{variable_name}}`，这些变量可以来自环境配置或前置测试用例的提取结果。
 
 ## 🎉 总结
 
 这个工具的设计理念是：
 
-- **简单易用**：非技术人员只需编辑 YAML 配置文件
+- **简单易用**：非技术人员只需编辑 Excel 文件
 - **功能完整**：支持各种HTTP方法和响应验证
-- **报告清晰**：生成易读的HTML测试报告
+- **报告清晰**：生成直观的 Allure 测试报告
 - **环境隔离**：支持多环境配置
+- **并行执行**：提高测试效率
+- **智能依赖**：自动处理测试用例之间的依赖关系
 
 你只需要：
 
 1. 了解你要测试的API接口
-2. 按照模板填写测试用例
+2. 按照模板填写 Excel 测试用例
 3. 运行测试并查看报告
 
 无需编写任何代码！
@@ -361,6 +424,7 @@ A: 支持 GET, POST, PUT, DELETE, PATCH 等常见HTTP方法。
 | description      | 字符串     | 详细描述，用于 Allure 报告                             | 测试用户注册功能，验证成功状态码和返回的用户ID                                                                     |
 
 ## 整体流程
+
 ```mermaid
 graph TD
     A[启动测试] --> B{读取Excel/CSV接口数据}
@@ -384,4 +448,5 @@ graph TD
     P -->|否| Q[生成Allure报告]
     Q --> R[查看报告]
 ```
+
 ![img.png](doc/flow_chart.png)

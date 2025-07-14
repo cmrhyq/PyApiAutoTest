@@ -4,520 +4,101 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="1. 新增请求路径可通过路径参数来替换成想要的值&#10;2. 新增响应字段提取">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="Merge branch 'main' of https://github.com/cmrhyq/PyApiAutoTest&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;conftest.py&#10;#&#9;data/api_test_data.yaml&#10;#&#9;test/test_api.py">
+    <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/env_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/env_config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/api_test_data.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/data/api_test_data.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/email/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/email/send_email.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/http/http_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/http/http_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/http/request_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/http/request_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/log/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/log/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/validators/assert_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/validators/assert_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/validators/assertion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/validators/response_validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/env_config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/manager/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/manager/manager_config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/loader/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/loader/data_loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/mock/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/patterns/decorator/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/patterns/decorator/retry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/patterns/decorator/timer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/patterns/singleton/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/mysql_singleton.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/api_test_data.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/entity/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/entity/api_schemas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/entity/jsonplaceholder_schemas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/entity/schemas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enum/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/enum/enums.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cases/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/cases/test_api.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/template/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/template/api_template.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_runner.py" afterDir="false" />
     </list>
-    <list default="true" id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="新增测试用例表格" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass">
-    <envs>
-      <env key="FLASK_APP" value="app" />
-    </envs>
-    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass" />
-    <option name="myEnvs">
-      <map>
-        <entry key="FLASK_APP" value="app" />
-      </map>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="2vzytr3EAYUMw82piBpZ3BTNih4" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2zpFc3R3fNeKuPKWfwTWDJBSKON" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_user.TestUser.test_user_creation.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.pytest for batch_test_example.TestBatchAPIs.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cache_example.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cli.executor&quot;: &quot;Run&quot;,
-    &quot;Python.data_loader.executor&quot;: &quot;Run&quot;,
-    &quot;Python.internet_utils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.web_driver_singleton.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/EDY/Desktop/Code/PyApiAutoTest/data&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\EDY\Desktop\Code\PyApiAutoTest\data" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="I:\Code\4.python_code\PyApiAutoTest\common" />
-      <recent name="I:\Code\4.python_code\PyApiAutoTest\doc" />
-      <recent name="I:\Code\4.python_code\PyApiAutoTest\core\validators" />
-      <recent name="I:\Code\4.python_code\PyApiAutoTest\config\manager" />
-      <recent name="C:\Users\EDY\Desktop\Code\PyApiAutoTest\data" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Python.run_test">
-    <configuration name="cache_example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyApiAutoTest" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/patterns/singleton" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/patterns/singleton/cache_example.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="data_loader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyApiAutoTest" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core/loader" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/loader/data_loader.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="run_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="UiAutomationTestInit" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <EXTENSION ID="software.aws.toolkits.jetbrains.core.execution.PythonAwsConnectionExtension">
-        <option name="credential" />
-        <option name="region" />
-        <option name="useCurrentConnection" value="false" />
-      </EXTENSION>
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test.modules.user_test.TestUser" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="UiAutomationTestInit" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/modules" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.modules.user_test.TestUser&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest for batch_test_example.TestBatchAPIs" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="UiAutomationTestInit" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/modules" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;batch_test_example.TestBatchAPIs&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.cache_example" />
-      <item itemvalue="Python.data_loader" />
-      <item itemvalue="Python.run_test" />
-      <item itemvalue="Python tests.Python tests for test.modules.user_test.TestUser" />
-      <item itemvalue="Python tests.pytest for batch_test_example.TestBatchAPIs" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.run_test" />
-        <item itemvalue="Python.data_loader" />
-        <item itemvalue="Python.cache_example" />
-        <item itemvalue="Python tests.pytest for batch_test_example.TestBatchAPIs" />
-        <item itemvalue="Python tests.Python tests for test.modules.user_test.TestUser" />
-      </list>
-    </recent_temporary>
-  </component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
+        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3b84648b-6285-4447-805c-948a7bd14773" name="Changes" comment="" />
-      <created>1745162416095</created>
+      <changelist id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="" />
+      <created>1752420183357</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1745162416095</updated>
-      <workItem from="1745162417751" duration="4975000" />
-      <workItem from="1745249865531" duration="1424000" />
-      <workItem from="1745395475566" duration="799000" />
-      <workItem from="1745404458327" duration="4000" />
-      <workItem from="1746541036486" duration="2068000" />
-      <workItem from="1746580275532" duration="613000" />
-      <workItem from="1751470762688" duration="2639000" />
-      <workItem from="1751557659832" duration="1644000" />
-      <workItem from="1751636743710" duration="2239000" />
-      <workItem from="1751724395946" duration="598000" />
-      <workItem from="1751734875821" duration="1556000" />
-      <workItem from="1751778963083" duration="9299000" />
-      <workItem from="1751819689269" duration="70000" />
-      <workItem from="1751900101567" duration="133000" />
-      <workItem from="1751900241927" duration="211000" />
-      <workItem from="1751900553651" duration="5875000" />
-      <workItem from="1752073056027" duration="1794000" />
-      <workItem from="1752158051299" duration="7901000" />
+      <updated>1752420183357</updated>
+      <workItem from="1752420184445" duration="3078000" />
+      <workItem from="1752503877636" duration="833000" />
     </task>
-    <task id="LOCAL-00001" summary="日志">
-      <option name="closed" value="true" />
-      <created>1745167710088</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1745167710088</updated>
-    </task>
-    <task id="LOCAL-00002" summary="日志">
-      <option name="closed" value="true" />
-      <created>1745167717887</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1745167717887</updated>
-    </task>
-    <task id="LOCAL-00003" summary="移动代码位置">
-      <option name="closed" value="true" />
-      <created>1745167733943</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1745167733943</updated>
-    </task>
-    <task id="LOCAL-00004" summary="改名">
-      <option name="closed" value="true" />
-      <created>1745167746831</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1745167746831</updated>
-    </task>
-    <task id="LOCAL-00005" summary="更新">
-      <option name="closed" value="true" />
-      <created>1745167811306</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1745167811306</updated>
-    </task>
-    <task id="LOCAL-00006" summary="更新selenium配置实体类名称">
-      <option name="closed" value="true" />
-      <created>1745167922725</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1745167922725</updated>
-    </task>
-    <task id="LOCAL-00007" summary="更新获取pc端ua和phone端ua的方法">
-      <option name="closed" value="true" />
-      <created>1745168314725</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1745168314725</updated>
-    </task>
-    <task id="LOCAL-00008" summary="测试报告">
-      <option name="closed" value="true" />
-      <created>1745251279610</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1745251279610</updated>
-    </task>
-    <task id="LOCAL-00009" summary="测试报告">
-      <option name="closed" value="true" />
-      <created>1745251284508</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1745251284508</updated>
-    </task>
-    <task id="LOCAL-00010" summary="更新测试用例">
-      <option name="closed" value="true" />
-      <created>1745251294543</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1745251294543</updated>
-    </task>
-    <task id="LOCAL-00011" summary="merge">
-      <option name="closed" value="true" />
-      <created>1751897415138</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1751897415138</updated>
-    </task>
-    <task id="LOCAL-00012" summary="merge">
-      <option name="closed" value="true" />
-      <created>1751980801384</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1751980801384</updated>
-    </task>
-    <task id="LOCAL-00013" summary="update gitgnore">
-      <option name="closed" value="true" />
-      <created>1751980858211</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1751980858211</updated>
-    </task>
-    <task id="LOCAL-00014" summary="1. 新增全局缓存工具类以及使用文档">
-      <option name="closed" value="true" />
-      <created>1751992277493</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1751992277493</updated>
-    </task>
-    <task id="LOCAL-00015" summary="1. 新增请求路径可通过路径参数来替换成想要的值&#10;2. 新增响应字段提取">
-      <option name="closed" value="true" />
-      <created>1751992471520</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1751992471520</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
-    <task id="LOCAL-00014" summary="Merge branch 'main' of https://github.com/cmrhyq/PyApiAutoTest&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;conftest.py&#10;#&#9;data/api_test_data.yaml&#10;#&#9;test/test_api.py">
-      <option name="closed" value="true" />
-      <created>1752023175270</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1752023175270</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
-    <task id="LOCAL-00016" summary="1. 新增需要屏蔽的内容">
-      <option name="closed" value="true" />
-      <created>1752074718771</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1752074718771</updated>
-    </task>
-    <task id="LOCAL-00017" summary="1. 改动">
-      <option name="closed" value="true" />
-      <created>1752074877396</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1752074877396</updated>
-    </task>
-    <task id="LOCAL-00018" summary="新增断言工具类">
-      <option name="closed" value="true" />
-      <created>1752166157985</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166157985</updated>
-    </task>
-    <task id="LOCAL-00019" summary="移动代码">
-      <option name="closed" value="true" />
-      <created>1752166176292</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166176292</updated>
-    </task>
-    <task id="LOCAL-00020" summary="全局缓存器新增替换字符串中的占位符方法">
-      <option name="closed" value="true" />
-      <created>1752166211144</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166211144</updated>
-    </task>
-    <task id="LOCAL-00021" summary="移动代码位置">
-      <option name="closed" value="true" />
-      <created>1752166235992</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166235992</updated>
-    </task>
-    <task id="LOCAL-00022" summary="新增从excel文件读取测试用例方法">
-      <option name="closed" value="true" />
-      <created>1752166256420</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166256420</updated>
-    </task>
-    <task id="LOCAL-00023" summary="1. 新增excel测试用例字段说明&#10;2. 新增流程图">
-      <option name="closed" value="true" />
-      <created>1752166312663</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166312663</updated>
-    </task>
-    <task id="LOCAL-00024" summary="新增请求工具类">
-      <option name="closed" value="true" />
-      <created>1752166326855</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166326855</updated>
-    </task>
-    <task id="LOCAL-00025" summary="新增测试运行器">
-      <option name="closed" value="true" />
-      <created>1752166356595</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166356595</updated>
-    </task>
-    <task id="LOCAL-00026" summary="新增测试用例表格">
-      <option name="closed" value="true" />
-      <created>1752166372672</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1752166372672</updated>
-    </task>
-    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="日志" />
-    <MESSAGE value="改名" />
-    <MESSAGE value="更新" />
-    <MESSAGE value="更新selenium配置实体类名称" />
-    <MESSAGE value="更新获取pc端ua和phone端ua的方法" />
-    <MESSAGE value="测试报告" />
-    <MESSAGE value="更新测试用例" />
-    <MESSAGE value="项目初始结构" />
-    <MESSAGE value="merge" />
-    <MESSAGE value="update gitgnore" />
-    <MESSAGE value="1. 新增全局缓存工具类以及使用文档" />
-    <MESSAGE value="1. 新增请求路径可通过路径参数来替换成想要的值&#10;2. 新增响应字段提取" />
-    <MESSAGE value="1. 新增需要屏蔽的内容" />
-    <MESSAGE value="1. 改动" />
-    <MESSAGE value="新增断言工具类" />
-    <MESSAGE value="移动代码" />
-    <MESSAGE value="全局缓存器新增替换字符串中的占位符方法" />
-    <MESSAGE value="移动代码位置" />
-    <MESSAGE value="新增从excel文件读取测试用例方法" />
-    <MESSAGE value="1. 新增excel测试用例字段说明&#10;2. 新增流程图" />
-    <MESSAGE value="新增请求工具类" />
-    <MESSAGE value="新增测试运行器" />
-    <MESSAGE value="新增测试用例表格" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增测试用例表格" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ApiAutomationTest$cli.coverage" NAME="cli Coverage Results" MODIFIED="1751816452503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyApiAutoTest$data_loader.coverage" NAME="data_loader Coverage Results" MODIFIED="1751985652848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/loader" />
-    <SUITE FILE_PATH="coverage/PyApiAutoTest$run_test.coverage" NAME="run_test Coverage Results" MODIFIED="1751900011926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ApiAutomationTest$.coverage" NAME=" Coverage Results" MODIFIED="1751472253280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/case" />
-    <SUITE FILE_PATH="coverage/UiAutomationTestInit$web_driver_singleton.coverage" NAME="web_driver_singleton Coverage Results" MODIFIED="1745166198541" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/singleton" />
-    <SUITE FILE_PATH="coverage/PyApiAutoTest$cache_example.coverage" NAME="cache_example Coverage Results" MODIFIED="1751982720254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core/patterns/singleton" />
-    <SUITE FILE_PATH="coverage/ApiAutomationTest$pytest_for_batch_test_example_TestBatchAPIs.coverage" NAME="pytest for batch_test_example.TestBatchAPIs Coverage Results" MODIFIED="1751814050451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test/modules" />
-    <SUITE FILE_PATH="coverage/UiAutomationTestInit$internet_utils.coverage" NAME="internet_utils Coverage Results" MODIFIED="1745167976256" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils/internet" />
   </component>
 </project>

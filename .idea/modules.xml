@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PyApiAutoTest.iml" filepath="$PROJECT_DIR$/.idea/PyApiAutoTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ApiAutomationTest.iml" filepath="$PROJECT_DIR$/.idea/ApiAutomationTest.iml" />
     </modules>
   </component>
 </project>

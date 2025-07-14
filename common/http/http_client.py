@@ -1,6 +1,8 @@
-from typing import Dict
-
+from typing import Dict, Optional, Union, Any
+import time
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from common.log import Logger
 
 # 配置日志记录
@@ -8,18 +10,48 @@ logger = Logger().get_logger()
 
 
 class HttpClient:
-    def __init__(self, base_url: str, default_headers: Dict[str, str] = None, timeout: int = 30):
+    def __init__(self, base_url: str, default_headers: Dict[str, str] = None, timeout: int = 30,
+                 max_retries: int = 3, retry_delay: int = 1, pool_connections: int = 10, pool_maxsize: int = 10):
         """
         初始化 HTTP 客户端
-        :param timeout: 请求超时时间，默认 10 秒
+        :param base_url: API 基础 URL
+        :param default_headers: 默认请求头
+        :param timeout: 请求超时时间，默认 30 秒
+        :param max_retries: 最大重试次数，默认 3 次
+        :param retry_delay: 重试延迟时间，默认 1 秒
+        :param pool_connections: 连接池连接数，默认 10
+        :param pool_maxsize: 连接池最大连接数，默认 10
         """
         self.base_url = base_url.rstrip('/')
         self.default_headers = default_headers or {}
         self.timeout = timeout
+        self.max_retries = max_retries
+        self.retry_delay = retry_delay
+        
+        # 创建会话并配置连接池
         self.session = requests.Session()
         self.session.headers.update(self.default_headers)
+        
+        # 配置重试策略
+        retry_strategy = Retry(
+            total=max_retries,
+            backoff_factor=retry_delay,
+            status_forcelist=[429, 500, 502, 503, 504],
+            allowed_methods=["HEAD", "GET", "OPTIONS", "POST", "PUT", "DELETE", "PATCH"]
+        )
+        
+        # 配置连接池适配器
+        adapter = HTTPAdapter(
+            max_retries=retry_strategy,
+            pool_connections=pool_connections,
+            pool_maxsize=pool_maxsize
+        )
+        
+        # 注册适配器
+        self.session.mount("http://", adapter)
+        self.session.mount("https://", adapter)
 
-    def _request(self, method, url, **kwargs):
+    def _request(self, method: str, url: str, **kwargs) -> Optional[requests.Response]:
         """
         基础请求方法
         :param method: 请求方法，如 'GET', 'POST' 等
@@ -27,9 +59,10 @@ class HttpClient:
         :param kwargs: 其他 requests 请求参数
         :return: 响应对象或 None
         """
+        start_time = time.time()
         try:
-            """发送HTTP请求"""
-            url = f"{self.base_url}{url}"
+            # 构建完整URL
+            full_url = f"{self.base_url}{url}"
 
             # 合并headers
             headers = self.default_headers.copy()
@@ -39,19 +72,34 @@ class HttpClient:
 
             # 设置超时
             kwargs.setdefault('timeout', self.timeout)
-            # 发送请求
-            response = self.session.request(method, url, **kwargs)
-
-            logger.info(f'Request URL: {url}')
+            
+            # 记录请求信息
+            logger.info(f'Request URL: {full_url}')
             logger.info(f'Request Method: {method}')
-            logger.info(f'Request Headers: {kwargs.get("headers", {})}')
-            logger.info(f'Request Body: {kwargs.get("json", {})}')
-            logger.info(f'Response Status Code: {response.status_code}')
-            logger.info(f'Response Body: {response.json()}')
+            logger.info(f'Request Headers: {headers}')
+            if 'json' in kwargs:
+                logger.info(f'Request Body (JSON): {kwargs.get("json")}')
+            elif 'data' in kwargs:
+                logger.info(f'Request Body (Form): {kwargs.get("data")}')
+            
+            # 发送请求
+            response = self.session.request(method, full_url, **kwargs)
+            
+            # 计算请求耗时
+            elapsed_time = time.time() - start_time
+            
+            # 记录响应信息
+            logger.info(f'Response Status Code: {response.status_code} (took {elapsed_time:.2f}s)')
+            try:
+                response_json = response.json()
+                logger.info(f'Response Body: {response_json}')
+            except ValueError:
+                logger.info(f'Response Body (text): {response.text[:500]}' + ('...' if len(response.text) > 500 else ''))
 
             return response
         except requests.exceptions.RequestException as e:
-            logger.error(f'发送请求出错: {e}')
+            elapsed_time = time.time() - start_time
+            logger.error(f'Request failed after {elapsed_time:.2f}s: {str(e)}')
             return None
 
     def get(self, url, params=None, **kwargs):
