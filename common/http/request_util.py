@@ -47,6 +47,8 @@ class RequestUtil:
             return [self._prepare_data(elem) for elem in data]
         elif isinstance(data, str):
             # 检查字符串是否包含占位符 ${var_name}
+            # TODO 测试是不是真的能替换
+            # TODO 新增一个替换URL的功能
             if '${' in data and '}' in data:
                 try:
                     return self.cache.replace_placeholder(data)

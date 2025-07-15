@@ -5,47 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/email/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/email/send_email.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/http/http_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/http/http_client.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/http/request_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/http/request_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/log/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/log/logger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/validators/assert_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/validators/assert_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/validators/assertion.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/validators/response_validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/env_config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/manager/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/manager/manager_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/loader/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/loader/data_loader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/mock/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/patterns/decorator/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/patterns/decorator/retry.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/patterns/decorator/timer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/patterns/singleton/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/mysql_singleton.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/api_test_data.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/entity/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/entity/api_schemas.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/entity/jsonplaceholder_schemas.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/entity/schemas.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/enum/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/enum/enums.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cases/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cases/test_api.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/template/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/template/api_template.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_runner.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,24 +26,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
-        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -95,6 +58,7 @@
       <updated>1752420183357</updated>
       <workItem from="1752420184445" duration="3078000" />
       <workItem from="1752503877636" duration="833000" />
+      <workItem from="1752549345151" duration="405000" />
     </task>
     <servers />
   </component>
