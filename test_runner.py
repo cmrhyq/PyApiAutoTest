@@ -7,12 +7,12 @@ import os
 import time
 import traceback
 import concurrent.futures
-from typing import Dict, List, Any, Optional
+from typing import Dict, List, Any
 from datetime import datetime
 
 from common.excel.excel_parser import read_test_cases_from_excel
 from common.http.request_util import RequestUtil
-from common.validators.assert_util import assert_response, AssertionResult
+from common.validators.assert_util import assert_response
 from common.log.logger import Logger
 from core.patterns.singleton import CacheSingleton
 
