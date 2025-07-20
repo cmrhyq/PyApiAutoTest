@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="框架代码大更新：&#10;1. 测试数据使用excel进行管理&#10;2. 修复上个版本中所有的接口请求都在同一个记录里">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/http/request_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/http/request_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/cache_singleton.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/patterns/singleton/cache_singleton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test_cases.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/test_cases.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_runner.py" afterDir="false" />
+    <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="1. 修复测试报告中占位符未替换的问题">
+      <change afterPath="$PROJECT_DIR$/.kiro/specs/test-framework-refactor/design.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.kiro/specs/test-framework-refactor/requirements.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.kiro/specs/test-framework-refactor/tasks.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/interview_questions.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +93,7 @@
       <workItem from="1752671733713" duration="8000" />
       <workItem from="1752677988961" duration="4975000" />
       <workItem from="1752741948764" duration="7790000" />
-      <workItem from="1753020014811" duration="3345000" />
+      <workItem from="1753020014811" duration="3688000" />
     </task>
     <task id="LOCAL-00001" summary="框架代码大更新：&#10;1. 测试数据使用excel进行管理&#10;2. 修复上个版本中所有的接口请求都在同一个记录里">
       <option name="closed" value="true" />
@@ -106,7 +103,23 @@
       <option name="project" value="LOCAL" />
       <updated>1752506697913</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1. 新增递归替换请求数据中的占位符">
+      <option name="closed" value="true" />
+      <created>1753025007430</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1753025007430</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1. 修复测试报告中占位符未替换的问题">
+      <option name="closed" value="true" />
+      <created>1753025030716</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1753025030716</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +127,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="框架代码大更新：&#10;1. 测试数据使用excel进行管理&#10;2. 修复上个版本中所有的接口请求都在同一个记录里" />
-    <option name="LAST_COMMIT_MESSAGE" value="框架代码大更新：&#10;1. 测试数据使用excel进行管理&#10;2. 修复上个版本中所有的接口请求都在同一个记录里" />
+    <MESSAGE value="1. 新增递归替换请求数据中的占位符" />
+    <MESSAGE value="1. 修复测试报告中占位符未替换的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. 修复测试报告中占位符未替换的问题" />
   </component>
 </project>
