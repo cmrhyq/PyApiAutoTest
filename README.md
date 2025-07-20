@@ -121,6 +121,9 @@ python run_tests.py -p -w 4
 
 # 生成Allure报告
 python run_tests.py --report
+
+# 查看报告
+allure serve .\reports\allure-results\
 ```
 
 ## 📝 如何添加新的测试用例
