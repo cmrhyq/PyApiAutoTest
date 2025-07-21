@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="1. 修复测试报告中占位符未替换的问题">
-      <change afterPath="$PROJECT_DIR$/.kiro/specs/test-framework-refactor/design.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.kiro/specs/test-framework-refactor/requirements.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.kiro/specs/test-framework-refactor/tasks.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/doc/interview_questions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/http/request_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/http/request_util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/patterns/singleton/cache_singleton.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pytest.ini" beforeDir="false" afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_runner.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +98,7 @@
       <workItem from="1752677988961" duration="4975000" />
       <workItem from="1752741948764" duration="7790000" />
       <workItem from="1753020014811" duration="3688000" />
+      <workItem from="1753104132867" duration="5748000" />
     </task>
     <task id="LOCAL-00001" summary="框架代码大更新：&#10;1. 测试数据使用excel进行管理&#10;2. 修复上个版本中所有的接口请求都在同一个记录里">
       <option name="closed" value="true" />
@@ -119,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753025030716</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1. 修复测试报告中占位符未替换的问题">
+      <option name="closed" value="true" />
+      <created>1753025349789</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1753025349789</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

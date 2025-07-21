@@ -5,10 +5,10 @@ import time
 from typing import Dict, Any, Optional, Union, List
 from requests.exceptions import RequestException, Timeout, ConnectionError
 
-from common.log import Logger
+from common.log.logger import Logger
 import jsonpath_ng.ext as jsonpath # 用于 JSONPath 提取
 from common.http.http_client import HttpClient
-from core.patterns.singleton import CacheSingleton
+from common.patterns import CacheSingleton
 
 logger = Logger().get_logger()
 
