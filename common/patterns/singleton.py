@@ -2,7 +2,7 @@ import threading
 from typing import Any, Dict, Optional
 from datetime import datetime, timedelta
 
-from common.log import Logger
+from common.log.logger import Logger
 
 logger = Logger().get_logger()
 
@@ -100,7 +100,7 @@ class CacheSingleton:
         return result
 
     def replace_placeholder(self, data_str):
-        """替换字符串中的 $variable_name$ 占位符"""
+        """替换字符串中的 ${variable_name} 占位符"""
         if not isinstance(data_str, str):
             return data_str  # 只处理字符串
 
@@ -110,8 +110,30 @@ class CacheSingleton:
             var_value = self.get(var_name)
             if var_value is None:
                 # 如果变量不存在，可能需要报错或者返回原始占位符
-                logger.error(f"Placeholder ${var_name}$ found but variable not set.")
+                logger.error(f"Placeholder ${var_name} found but variable not set.")
                 return match.group(0)  # 返回原始占位符，避免请求错误
             return str(var_value)  # 确保返回字符串
 
-        return re.sub(r'\$(\w+)\$', replace_match, data_str)
+        return re.sub(r'\$\{(\w+)\}', replace_match, data_str)
+
+    def prepare_data(self, data: Any) -> Any:
+        """
+        递归替换请求数据中的占位符
+        :param data: 需要处理的数据
+        :return: 处理后的数据
+        """
+        if isinstance(data, dict):
+            return {k: self.prepare_data(v) for k, v in data.items()}
+        elif isinstance(data, list):
+            return [self.prepare_data(elem) for elem in data]
+        elif isinstance(data, str):
+            # 检查字符串是否包含占位符 ${var_name}
+            if '${' in data and '}' in data:
+                try:
+                    return self.replace_placeholder(data)
+                except Exception as e:
+                    logger.warning(f"Error replacing placeholder in '{data}': {e}")
+                    return data
+            return data
+        else:
+            return data

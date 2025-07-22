@@ -5,10 +5,10 @@ import time
 from typing import Dict, Any, Optional, Union, List
 from requests.exceptions import RequestException, Timeout, ConnectionError
 
-from common.log import Logger
+from common.log.logger import Logger
 import jsonpath_ng.ext as jsonpath # 用于 JSONPath 提取
 from common.http.http_client import HttpClient
-from core.patterns.singleton import CacheSingleton
+from common.patterns import CacheSingleton
 
 logger = Logger().get_logger()
 
@@ -35,30 +35,6 @@ class RequestUtil:
         )
         self.cache = CacheSingleton()
 
-    def _prepare_data(self, data: Any) -> Any:
-        """
-        递归替换请求数据中的占位符
-        :param data: 需要处理的数据
-        :return: 处理后的数据
-        """
-        if isinstance(data, dict):
-            return {k: self._prepare_data(v) for k, v in data.items()}
-        elif isinstance(data, list):
-            return [self._prepare_data(elem) for elem in data]
-        elif isinstance(data, str):
-            # 检查字符串是否包含占位符 ${var_name}
-            # TODO 测试是不是真的能替换
-            # TODO 新增一个替换URL的功能
-            if '${' in data and '}' in data:
-                try:
-                    return self.cache.replace_placeholder(data)
-                except Exception as e:
-                    logger.warning(f"Error replacing placeholder in '{data}': {e}")
-                    return data
-            return data
-        else:
-            return data
-
     def send_request(self, method: str, path: str, headers: Dict = None, params: Dict = None, 
                    body: Dict = None, timeout: int = None, verify: bool = True) -> requests.Response:
         """
@@ -74,9 +50,10 @@ class RequestUtil:
         :raises: RequestException 如果请求失败
         """
         # 替换请求头、参数、请求体中的变量
-        processed_headers = self._prepare_data(headers) if headers else {}
-        processed_params = self._prepare_data(params) if params else {}
-        processed_body = self._prepare_data(body) if body else {}
+        processed_path = self.cache.prepare_data(path) if path else ''
+        processed_headers = self.cache.prepare_data(headers) if headers else {}
+        processed_params = self.cache.prepare_data(params) if params else {}
+        processed_body = self.cache.prepare_data(body) if body else {}
 
         # 记录请求开始时间
         start_time = time.time()
@@ -84,15 +61,15 @@ class RequestUtil:
         try:
             # 使用HTTP客户端发送请求
             if method.upper() == "GET":
-                response = self.http_client.get(path, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
+                response = self.http_client.get(processed_path, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
             elif method.upper() == "POST":
-                response = self.http_client.post(path, json=processed_body, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
+                response = self.http_client.post(processed_path, json=processed_body, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
             elif method.upper() == "PUT":
-                response = self.http_client.put(path, json=processed_body, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
+                response = self.http_client.put(processed_path, json=processed_body, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
             elif method.upper() == "DELETE":
-                response = self.http_client.delete(path, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
+                response = self.http_client.delete(processed_path, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
             elif method.upper() == "PATCH":
-                response = self.http_client.patch(path, json=processed_body, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
+                response = self.http_client.patch(processed_path, json=processed_body, params=processed_params, headers=processed_headers, timeout=timeout, verify=verify)
             else:
                 raise ValueError(f"Unsupported HTTP method: {method}")
 
