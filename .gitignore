@@ -1,5 +1,5 @@
 logs/*
-data/api_test_data.yaml
+data/test_cases.xlsx
 config/env_config.yaml
 
 # 字节码文件和缓存目录
