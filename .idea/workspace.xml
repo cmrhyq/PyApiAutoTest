@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="update TODO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/http/request_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/http/request_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_runner.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +57,22 @@
       <workItem from="1752503877636" duration="833000" />
       <workItem from="1752549345151" duration="405000" />
     </task>
+    <task id="LOCAL-00001" summary="update TODO">
+      <option name="closed" value="true" />
+      <created>1752568000062</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1752568000062</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update TODO" />
+    <option name="LAST_COMMIT_MESSAGE" value="update TODO" />
   </component>
 </project>
