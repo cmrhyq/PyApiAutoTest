@@ -93,7 +93,7 @@
       <workItem from="1753020014811" duration="3688000" />
       <workItem from="1753104132867" duration="5936000" />
       <workItem from="1753151912416" duration="744000" />
-      <workItem from="1753166808858" duration="2020000" />
+      <workItem from="1753166808858" duration="2641000" />
     </task>
     <task id="LOCAL-00001" summary="框架代码大更新：&#10;1. 测试数据使用excel进行管理&#10;2. 修复上个版本中所有的接口请求都在同一个记录里">
       <option name="closed" value="true" />
