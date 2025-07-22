@@ -33,9 +33,6 @@ test_session = TestSession(config_manager)
 allure_reporter = AllureReporter()
 
 
-# TestSession的setup_session现在是全局pytest fixture，会自动执行
-
-
 # 加载测试用例
 if not test_case_manager.load_test_cases():
     logger.critical("Failed to load test cases. Exiting...")
