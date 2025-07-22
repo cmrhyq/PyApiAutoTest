@@ -21,9 +21,10 @@ from email.mime.multipart import MIMEMultipart
 from email.header import Header
 from smtplib import SMTP, SMTP_SSL
 from common.log import Logger
+from core import ConfigManager
 
 # 初始化日志和缓存
-logger_instance = Logger(name="test_runner")
+logger_instance = Logger()
 logger = logger_instance.get_logger()
 
 
@@ -35,12 +36,12 @@ class SendEmail:
         初始化邮件发送类
         :param use_ssl: 是否使用SSL连接，默认True
         """
-        self.conf = configparser.ConfigParser()
-        self.conf.read('config/config.ini')
-        self.host = self.conf["email"]["host"]
-        self.port = self.conf["email"]["port"]
-        self.sender = self.conf["email"]["sender"]
-        self.password = self.conf["email"]["license"]
+        self.config_manager = ConfigManager()
+        self.conf = self.config_manager.mail_config
+        self.host = self.conf.host
+        self.port = self.conf.host
+        self.sender = self.conf.sender
+        self.password = self.conf.license
         self.use_ssl = use_ssl
         self.smtp = SMTP_SSL(self.host, int(self.port)) if use_ssl else SMTP(self.host, int(self.port))
         self.message = MIMEMultipart('alternative')
