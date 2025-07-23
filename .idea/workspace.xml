@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="1. 删除无用代码">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/patterns/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/patterns/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/patterns/singleton.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/patterns/cache_singleton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/config/config_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/config/config_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/reporter/allure_reporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/reporter/allure_reporter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test_cases.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/data/test_cases.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_runner.py" afterDir="false" />
-    </list>
+    <list default="true" id="4355fed3-eda7-453a-a7db-8948179117ee" name="Changes" comment="1. 更新说明文档&#10;2. 更新将全局变量配置文件加载到全局缓存中的过程&#10;3. 删除junit报告生成" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -224,7 +214,7 @@
       <workItem from="1753151912416" duration="744000" />
       <workItem from="1753166808858" duration="10256000" />
       <workItem from="1753276731608" duration="364000" />
-      <workItem from="1753278977507" duration="4966000" />
+      <workItem from="1753278977507" duration="5329000" />
     </task>
     <task id="LOCAL-00001" summary="框架代码大更新：&#10;1. 测试数据使用excel进行管理&#10;2. 修复上个版本中所有的接口请求都在同一个记录里">
       <option name="closed" value="true" />
@@ -354,7 +344,23 @@
       <option name="project" value="LOCAL" />
       <updated>1753201328402</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="1. 新增全局变量配置文件以及相关配置代码">
+      <option name="closed" value="true" />
+      <created>1753285055436</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1753285055436</updated>
+    </task>
+    <task id="LOCAL-00018" summary="1. 更新说明文档&#10;2. 更新将全局变量配置文件加载到全局缓存中的过程&#10;3. 删除junit报告生成">
+      <option name="closed" value="true" />
+      <created>1753285223750</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1753285223750</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,7 +390,9 @@
     <MESSAGE value="1. 更新邮件发送类的配置获取方式" />
     <MESSAGE value="1. 更新注释" />
     <MESSAGE value="1. 删除无用代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. 删除无用代码" />
+    <MESSAGE value="1. 新增全局变量配置文件以及相关配置代码" />
+    <MESSAGE value="1. 更新说明文档&#10;2. 更新将全局变量配置文件加载到全局缓存中的过程&#10;3. 删除junit报告生成" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. 更新说明文档&#10;2. 更新将全局变量配置文件加载到全局缓存中的过程&#10;3. 删除junit报告生成" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ApiAutomationTest$use_variables.coverage" NAME="use_variables Coverage Results" MODIFIED="1753280792977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/examples" />
