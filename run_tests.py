@@ -96,14 +96,13 @@ class TestRunner:
                                help="测试完成后自动打开报告")
         # reporting.add_argument("--html-report", action="store_true", dest="html_report",
         #                        help="生成HTML格式的报告")
-        # reporting.add_argument("--junit-report", action="store_true", dest="junit_report",
-        #                        help="生成JUnit格式的报告")
 
         # 环境相关
         environment = parser.add_argument_group("环境配置")
         environment.add_argument("--env", choices=["dev", "test", "staging", "prod"], default="test",
                                  help="指定测试环境")
         environment.add_argument("--config", help="指定配置文件路径")
+        environment.add_argument("--vars-config", dest="vars_config", help="指定变量配置文件路径")
         environment.add_argument("--debug", action="store_true", help="启用调试模式")
         environment.add_argument("--var", action="append", dest="variables",
                                  help="设置自定义变量，格式: 名称=值")
@@ -222,13 +221,25 @@ class TestRunner:
             config_path = self._validate_file_path(self.args.config)
             if config_path:
                 env["CONFIG_FILE"] = config_path
+                
+        # 变量配置文件设置
+        if self.args.vars_config:
+            vars_config_path = self._validate_file_path(self.args.vars_config)
+            if vars_config_path:
+                env["VARS_CONFIG_FILE"] = vars_config_path
+                # 重新初始化配置管理器，加载指定的变量配置文件
+                self.config_manager = ConfigManager(self.args.config, self.args.vars_config)
+                self.configs = self.config_manager.get_all_configs()
 
         # 自定义变量
         if self.args.variables:
             for var in self.args.variables:
                 if "=" in var:
                     name, value = var.split("=", 1)
+                    # 同时设置到环境变量和缓存中
                     env[f"TEST_VAR_{name.upper()}"] = value
+                    # 将变量添加到缓存，以便在测试执行过程中使用
+                    self.config_manager.set_variable(name, value)
 
         # 调试模式
         if self.args.debug:
@@ -283,11 +294,6 @@ class TestRunner:
             cmd.append(f"--html={html_report_dir}/report.html")
             cmd.append("--self-contained-html")
 
-        # JUnit报告
-        if self.configs.get("report").junit_report_dir:
-            junit_report_dir = self.configs.get("report").junit_report_dir
-            os.makedirs(junit_report_dir, exist_ok=True)
-            cmd.append(f"--junitxml={junit_report_dir}/junit-report.xml")
 
     def _run_pytest_command(self, cmd: List[str], env: Dict[str, str]) -> subprocess.CompletedProcess:
         """运行pytest命令

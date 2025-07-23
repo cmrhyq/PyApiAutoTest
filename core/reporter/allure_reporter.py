@@ -84,10 +84,12 @@ class AllureReporter:
     
     def attach_request_info(self, method: str, path: str, headers: Dict, params: Dict, body: Any) -> None:
         """附加请求信息"""
+
         path = self.cache.prepare_data(path)
         headers = self.cache.prepare_data(headers)
         params = self.cache.prepare_data(params)
         body = self.cache.prepare_data(body)
+
         with allure.step(f"发送 {method} 请求到 {path}"):
             allure.attach(
                 json.dumps(headers, indent=2, ensure_ascii=False),

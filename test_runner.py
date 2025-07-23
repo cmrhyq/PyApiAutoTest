@@ -2,6 +2,7 @@
 import pytest
 import allure
 import time
+import os
 from typing import Dict, Any
 
 from common.http.request_util import RequestUtil
@@ -16,7 +17,10 @@ from common.patterns import CacheSingleton
 logger = Logger().get_logger()
 
 # 初始化配置管理器
-config_manager = ConfigManager()
+# 从环境变量中获取配置文件路径和变量配置文件路径
+config_file = os.environ.get('CONFIG_FILE', 'config/config.ini')
+vars_config_file = os.environ.get('VARS_CONFIG_FILE', 'config/variables.ini')
+config_manager = ConfigManager(config_file, vars_config_file)
 configs = config_manager.get_all_configs()
 
 # 初始化各个组件

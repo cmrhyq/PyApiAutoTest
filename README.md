@@ -563,16 +563,67 @@ python utils/test_case_generator.py batch \
 
 占位符的值可以来自以下来源：
 
-1. **环境配置**：在 `config.ini` 中定义的变量
-2. **前置测试用例**：通过 `extract_vars` 提取的响应数据
-3. **全局变量**：框架预定义的系统变量
+1. **变量配置文件**：在 `config/variables.ini` 中定义的变量
+2. **命令行变量**：通过 `--var name=value` 参数设置的变量
+3. **前置测试用例**：通过 `extract_vars` 提取的响应数据
+4. **全局缓存**：框架运行时的全局变量缓存
+
+### 变量配置文件
+
+在 `config/variables.ini` 中可以集中定义测试中需要使用的变量：
+
+```ini
+[VARIABLES]
+# 用户信息
+user_id = 10001
+username = testuser
+password = password123
+
+# 环境信息
+env = test
+api_version = v1
+
+# 测试数据
+test_product_id = 12345
+test_order_id = 67890
+
+# 请求头信息
+auth_token = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+content_type = application/json
+```
+
+### 变量查找顺序
+
+当遇到 `${variable_name}` 格式的占位符时，框架会按照以下顺序查找变量值：
+
+1. 首先在全局缓存中查找（包括测试执行过程中提取的变量和命令行设置的变量）
+2. 如果未找到，则在 `variables.ini` 配置文件中查找
+3. 如果仍未找到，则保留原始占位符并记录警告日志
+
+### 命令行参数
+
+框架支持通过命令行参数设置变量和指定变量配置文件：
+
+```bash
+# 设置单个变量
+python run_tests.py --var user_id=12345
+
+# 设置多个变量
+python run_tests.py --var user_id=12345 --var auth_token=abc123
+
+# 指定变量配置文件
+python run_tests.py --vars-config config/custom_variables.ini
+```
 
 ### 实际应用场景
 
+在Excel测试用例中使用占位符：
+
 ```excel
-| url | headers | body |
-|-----|---------|------|
-| /api/users/${user_id} | {"Authorization": "Bearer ${token}"} | {"name": "${new_name}"} |
+| test_case_id | path                  | headers                                      | body                                    |
+|--------------|------------------------|----------------------------------------------|----------------------------------------|
+| TC001        | /api/users/${user_id} | {"Authorization": "${auth_token}"}          | {}                                     |
+| TC002        | /api/orders           | {"Authorization": "${auth_token}"}          | {"user_id": "${user_id}", "product_id": "${test_product_id}"} |
 ```
 
 当执行测试时，框架会自动将占位符替换为实际值，实现动态测试数据的灵活运用。
