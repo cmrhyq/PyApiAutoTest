@@ -1,8 +1,12 @@
 """配置管理模块"""
 import configparser
 import os
-from typing import Dict, Any
+from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
+from common.patterns import CacheSingleton
+from common.log.logger import Logger
+
+logger = Logger().get_logger()
 
 
 @dataclass
@@ -52,10 +56,15 @@ class ReportConfig:
 class ConfigManager:
     """配置管理器"""
     
-    def __init__(self, config_file: str = 'config/config.ini'):
+    def __init__(self, config_file: str = 'config/config.ini', variables_file: str = 'config/variables.ini'):
         self.config_file = config_file
+        self.variables_file = variables_file
         self._config = configparser.ConfigParser()
+        self._variables = configparser.ConfigParser()
         self._load_config()
+        self._load_variables()
+        self.cache = CacheSingleton()
+        self._initialize_cache()
         
     def _load_config(self):
         """加载配置文件"""
@@ -63,6 +72,84 @@ class ConfigManager:
             raise FileNotFoundError(f"配置文件不存在: {self.config_file}")
         
         self._config.read(self.config_file, encoding='utf-8')
+    
+    def _load_variables(self):
+        """加载变量配置文件"""
+        if os.path.exists(self.variables_file):
+            self._variables.read(self.variables_file, encoding='utf-8')
+            logger.info(f"已加载变量配置文件: {self.variables_file}")
+        else:
+            logger.warning(f"变量配置文件不存在: {self.variables_file}，将使用默认空配置")
+            # 创建一个空的变量配置节
+            self._variables.add_section('VARIABLES')
+    
+    def _initialize_cache(self):
+        """初始化缓存，将变量配置加载到缓存中"""
+        if 'VARIABLES' in self._variables:
+            for key, value in self._variables['VARIABLES'].items():
+                self.cache.set(key, value)
+                logger.debug(f"已加载变量到缓存: {key}={value}")
+    
+    def get_variable(self, name: str, default: Any = None) -> Any:
+        """获取变量值
+        
+        Args:
+            name: 变量名
+            default: 默认值
+            
+        Returns:
+            变量值或默认值
+        """
+        # 首先从缓存中获取
+        value = self.cache.get(name)
+        if value is not None:
+            return value
+            
+        # 如果缓存中没有，尝试从变量配置中获取
+        if 'VARIABLES' in self._variables and name in self._variables['VARIABLES']:
+            value = self._variables['VARIABLES'][name]
+            # 将值存入缓存
+            self.cache.set(name, value)
+            return value
+            
+        return default
+    
+    def set_variable(self, name: str, value: Any, persist: bool = False) -> None:
+        """设置变量值
+        
+        Args:
+            name: 变量名
+            value: 变量值
+            persist: 是否持久化到配置文件
+        """
+        # 设置到缓存
+        self.cache.set(name, value)
+        
+        # 如果需要持久化，则写入配置文件
+        if persist:
+            if 'VARIABLES' not in self._variables:
+                self._variables.add_section('VARIABLES')
+                
+            self._variables['VARIABLES'][name] = str(value)
+            with open(self.variables_file, 'w', encoding='utf-8') as f:
+                self._variables.write(f)
+            logger.info(f"变量已持久化到配置文件: {name}={value}")
+    
+    def get_all_variables(self) -> Dict[str, str]:
+        """获取所有变量
+        
+        Returns:
+            所有变量的字典
+        """
+        # 首先获取配置文件中的变量
+        variables = {}
+        if 'VARIABLES' in self._variables:
+            variables.update(dict(self._variables['VARIABLES']))
+            
+        # 然后获取缓存中的变量，缓存中的变量会覆盖配置文件中的同名变量
+        variables.update(self.cache.get_all())
+        
+        return variables
     
     @property
     def api_config(self) -> APIConfig:
@@ -125,5 +212,6 @@ class ConfigManager:
             'mail': self.mail_config,
             'log': self.log_config,
             'test': self.test_config,
-            'report': self.report_config
+            'report': self.report_config,
+            'variables': self.get_all_variables()
         }
