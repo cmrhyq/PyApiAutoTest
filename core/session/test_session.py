@@ -28,9 +28,9 @@ class TestSession:
         start_time = time.time()
         logger.info("===== Test Session Start =====")
         logger.info(
-            f"Configuration: BASE_URL={config_manager.api_config.base_url}, "
-            f"PARALLEL={config_manager.test_config.parallel_execution}, "
-            f"MAX_WORKERS={config_manager.test_config.max_workers}"
+            f"Configuration: BASE_URL={self.config_manager.api_config.base_url}, "
+            f"PARALLEL={self.config_manager.test_config.parallel_execution}, "
+            f"MAX_WORKERS={self.config_manager.test_config.max_workers}"
         )
         
         # 清理变量池
