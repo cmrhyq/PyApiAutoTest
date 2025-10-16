@@ -59,11 +59,12 @@ class ConfigManager:
     def __init__(self, config_file: str = 'config/config.ini', variables_file: str = 'config/variables.ini'):
         self.config_file = config_file
         self.variables_file = variables_file
+        self.cache = CacheSingleton()
         self._config = configparser.ConfigParser()
         self._variables = configparser.ConfigParser()
+        # 初始化变量池，将配置文件中的变量加载到缓存中去
         self._load_config()
         self._load_variables()
-        self.cache = CacheSingleton()
         self._initialize_cache()
         
     def _load_config(self):
