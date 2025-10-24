@@ -66,7 +66,7 @@ def test_api_from_excel(test_case_data):
     allure_reporter.attach_test_case_data(test_case_data)
     
     # 记录开始执行
-    logger.info(f"\n--- Executing Test Case: {test_case_id} - {test_case_data.get('name', 'Unnamed')} ---")
+    logger.info(f"--- Executing Test Case: {test_case_id} - {test_case_data.get('name', 'Unnamed')} ---")
     
     # 执行测试用例
     with allure.step(f"执行测试用例 {test_case_id}"):
