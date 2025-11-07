@@ -288,11 +288,10 @@ class TestRunner:
         cmd.append(f"--alluredir={allure_results_dir}")
 
         # HTML报告
-        if self.configs.get("report").html_report_dir:
-            html_report_dir = self.configs.get("report").html_report_dir
-            os.makedirs(html_report_dir, exist_ok=True)
-            cmd.append(f"--html={html_report_dir}/report.html")
-            cmd.append("--self-contained-html")
+        # if self.configs.get("report").html_report_dir:
+        #     html_report_dir = self.configs.get("report").html_report_dir
+        #     os.makedirs(html_report_dir, exist_ok=True)
+        #     cmd.append(f"--html={html_report_dir}/report.html")
 
 
     def _run_pytest_command(self, cmd: List[str], env: Dict[str, str]) -> subprocess.CompletedProcess:
