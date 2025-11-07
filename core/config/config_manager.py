@@ -54,6 +54,7 @@ class ReportConfig:
 
 """
 解决configparser读取参数会自动将大写字母转换为小写的问题
+重载optionxform方法
 """
 class MyConfigParser(configparser.ConfigParser):
     def __init__(self, defaults=None):
