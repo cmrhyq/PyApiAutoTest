@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  api-test:
+    build: .
+    container_name: api-automation-test
+    volumes:
+      # 挂载测试数据目录
+      - ./data:/app/data
+      # 挂载配置文件目录
+      - ./config:/app/config
+      # 挂载报告输出目录
+      - ./reports:/app/reports
+      # 挂载日志目录
+      - ./logs:/app/logs
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    networks:
+      - test-network
+    # 默认运行帮助命令，实际使用时可以覆盖
+    command: ["python", "run_tests.py", "--help"]
+
+  # Allure报告服务
+  allure-report:
+    image: frankescobar/allure-docker-service
+    container_name: allure-report-service
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./reports/allure-results:/app/allure-results
+      - ./reports/allure-report:/app/default-reports
+    environment:
+      CHECK_RESULTS_EVERY_SECONDS: 3
+      KEEP_HISTORY: 1
+    networks:
+      - test-network
+    depends_on:
+      - api-test
+
+networks:
+  test-network:
+    driver: bridge
+
+volumes:
+  test-data:
+  test-reports:
+  test-logs:
