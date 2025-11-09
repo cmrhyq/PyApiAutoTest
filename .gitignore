@@ -66,3 +66,4 @@ config.ini
 settings.py # 如果包含敏感信息，可以考虑排除或使用环境变量
 credentials.json
 token.json
+.idea

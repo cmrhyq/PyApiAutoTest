@@ -114,7 +114,8 @@ class CacheSingleton:
                 return match.group(0)  # 返回原始占位符，避免请求错误
             return str(var_value)  # 确保返回字符串
 
-        return re.sub(r'\$\{(\w+)\}', replace_match, data_str)
+        r = re.sub(r'\$\{(\w+)\}', replace_match, data_str)
+        return r
 
     def prepare_data(self, data: Any) -> Any:
         """
@@ -122,6 +123,7 @@ class CacheSingleton:
         :param data: 需要处理的数据
         :return: 处理后的数据
         """
+        # TODO 想办法解决使用占位符替换int类型的数据时会因为不是规范的json导致整个json不替换的问题
         if isinstance(data, dict):
             return {k: self.prepare_data(v) for k, v in data.items()}
         elif isinstance(data, list):

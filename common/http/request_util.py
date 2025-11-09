@@ -75,13 +75,13 @@ class RequestUtil:
 
             if response is None:
                 raise RequestException(f"Request failed: No response returned for {method} {path}")
-                
+
             # 记录请求耗时
             elapsed_time = time.time() - start_time
             logger.debug(f"Request completed in {elapsed_time:.2f}s")
-            
+
             return response
-            
+
         except Timeout as e:
             elapsed_time = time.time() - start_time
             logger.error(f"Request timeout after {elapsed_time:.2f}s: {str(e)}")

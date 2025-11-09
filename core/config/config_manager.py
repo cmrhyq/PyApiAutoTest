@@ -52,6 +52,17 @@ class ReportConfig:
     html_report_dir: str = './reports/html-report'
     junit_report_dir: str = "./reports/junit-report"
 
+"""
+解决configparser读取参数会自动将大写字母转换为小写的问题
+重载optionxform方法
+"""
+class MyConfigParser(configparser.ConfigParser):
+    def __init__(self, defaults=None):
+        super().__init__(defaults=defaults)
+
+    def optionxform(self, optionstr):
+        return optionstr
+
 
 class ConfigManager:
     """配置管理器"""
@@ -59,11 +70,12 @@ class ConfigManager:
     def __init__(self, config_file: str = 'config/config.ini', variables_file: str = 'config/variables.ini'):
         self.config_file = config_file
         self.variables_file = variables_file
-        self._config = configparser.ConfigParser()
-        self._variables = configparser.ConfigParser()
+        self.cache = CacheSingleton()
+        self._config = MyConfigParser()
+        self._variables = MyConfigParser()
+        # 初始化变量池，将配置文件中的变量加载到缓存中去
         self._load_config()
         self._load_variables()
-        self.cache = CacheSingleton()
         self._initialize_cache()
         
     def _load_config(self):
@@ -88,7 +100,7 @@ class ConfigManager:
         if 'VARIABLES' in self._variables:
             for key, value in self._variables['VARIABLES'].items():
                 self.cache.set(key, value)
-                logger.debug(f"已加载变量到缓存: {key}={value}")
+                logger.info(f"已加载变量到缓存: {key}={value}")
     
     def get_variable(self, name: str, default: Any = None) -> Any:
         """获取变量值
