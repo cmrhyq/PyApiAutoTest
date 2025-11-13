@@ -1,3 +1,4 @@
+import re
 import threading
 from typing import Any, Dict, Optional
 from datetime import datetime, timedelta
@@ -20,6 +21,7 @@ class CacheSingleton:
     def _initialize(self):
         """初始化缓存"""
         self._cache: Dict[str, Dict[str, Any]] = {}
+        self.placeholder_pattern = re.compile(r'\$\{(\w+)\}')  # 匹配 ${var_name} 格式
 
     def set(self, key: str, value: Any, ttl: Optional[int] = None) -> None:
         """设置缓存值
@@ -109,6 +111,7 @@ class CacheSingleton:
             var_name = match.group(1)
             var_value = self.get(var_name)
             if var_value is None:
+
                 # 如果变量不存在，可能需要报错或者返回原始占位符
                 logger.error(f"Placeholder ${var_name} found but variable not set.")
                 return match.group(0)  # 返回原始占位符，避免请求错误
@@ -118,24 +121,51 @@ class CacheSingleton:
         return r
 
     def prepare_data(self, data: Any) -> Any:
-        """
-        递归替换请求数据中的占位符
-        :param data: 需要处理的数据
-        :return: 处理后的数据
-        """
-        # TODO 想办法解决使用占位符替换int类型的数据时会因为不是规范的json导致整个json不替换的问题
-        if isinstance(data, dict):
-            return {k: self.prepare_data(v) for k, v in data.items()}
-        elif isinstance(data, list):
-            return [self.prepare_data(elem) for elem in data]
-        elif isinstance(data, str):
-            # 检查字符串是否包含占位符 ${var_name}
-            if '${' in data and '}' in data:
+        # 栈存储待处理的数据和其容器（用于原地修改）
+        stack = [(data, None, None)]  # (当前数据, 父容器, 在父容器中的key/index)
+
+        while stack:
+            current, parent, key = stack.pop()
+            # TODO 想办法解决使用占位符替换int类型的数据时会因为不是规范的json导致整个json不替换的问题
+            if isinstance(current, dict):
+                # 遍历字典键值对，将子元素入栈
+                for k, v in current.items():
+                    stack.append((v, current, k))
+            elif isinstance(current, list):
+                # 遍历列表元素，将子元素入栈
+                for i, v in enumerate(current):
+                    stack.append((v, current, i))
+            elif isinstance(current, str) and self.placeholder_pattern.search(current):
+                # 处理字符串占位符，并更新父容器
                 try:
-                    return self.replace_placeholder(data)
+                    replaced = self.replace_placeholder(current)
+                    if parent is not None:
+                        parent[key] = replaced  # 原地修改父容器中的值
                 except Exception as e:
-                    logger.warning(f"Error replacing placeholder in '{data}': {e}")
-                    return data
-            return data
-        else:
-            return data
+                    logger.warning(f"替换占位符失败: {e}")
+
+        return data  # 原数据已被原地修改
+
+    # def prepare_data(self, data: Any) -> Any:
+    #     """
+    #     递归替换请求数据中的占位符
+    #     :param data: 需要处理的数据
+    #     :return: 处理后的数据
+    #     """
+    #     if data is None:
+    #         return data
+    #     # TODO 想办法解决使用占位符替换int类型的数据时会因为不是规范的json导致整个json不替换的问题
+    #     if isinstance(data, dict):
+    #         return {k: self.prepare_data(v) for k, v in data.items()}
+    #     elif isinstance(data, list):
+    #         return [self.prepare_data(elem) for elem in data]
+    #     elif isinstance(data, str):
+    #         if self.placeholder_pattern.search(data):
+    #             try:
+    #                 return self.replace_placeholder(data)
+    #             except Exception as e:
+    #                 logger.warning(f"Error replacing placeholder in '{data}': {e}")
+    #                 return data
+    #         return data
+    #     else:
+    #         return data
