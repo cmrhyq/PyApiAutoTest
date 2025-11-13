@@ -3,8 +3,8 @@ import configparser
 import os
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
-from common.patterns import CacheSingleton
 from common.log.logger import Logger
+from core.patterns.singleton.cache_singleton import CacheSingleton
 
 logger = Logger().get_logger()
 

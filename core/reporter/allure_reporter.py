@@ -7,7 +7,7 @@ import allure
 from requests import Response
 
 from common.log.logger import Logger
-from common.patterns import CacheSingleton
+from core.patterns.singleton.cache_singleton import CacheSingleton
 
 logger = Logger().get_logger()
 

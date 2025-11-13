@@ -8,7 +8,7 @@ from requests.exceptions import RequestException, Timeout, ConnectionError
 from common.log.logger import Logger
 import jsonpath_ng.ext as jsonpath # 用于 JSONPath 提取
 from common.http.http_client import HttpClient
-from common.patterns import CacheSingleton
+from core.patterns.singleton.cache_singleton import CacheSingleton
 
 logger = Logger().get_logger()
 

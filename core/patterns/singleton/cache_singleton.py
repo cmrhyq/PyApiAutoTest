@@ -37,7 +37,6 @@ class CacheSingleton:
         }
         with self._lock:
             self._cache[key] = cache_item
-            logger.debug(f"Cache set: {key}")
 
     def get(self, key: str, default: Any = None) -> Any:
         """获取缓存值
@@ -122,11 +121,11 @@ class CacheSingleton:
 
     def prepare_data(self, data: Any) -> Any:
         # 栈存储待处理的数据和其容器（用于原地修改）
+
         stack = [(data, None, None)]  # (当前数据, 父容器, 在父容器中的key/index)
 
         while stack:
             current, parent, key = stack.pop()
-            # TODO 想办法解决使用占位符替换int类型的数据时会因为不是规范的json导致整个json不替换的问题
             if isinstance(current, dict):
                 # 遍历字典键值对，将子元素入栈
                 for k, v in current.items():
@@ -145,27 +144,3 @@ class CacheSingleton:
                     logger.warning(f"替换占位符失败: {e}")
 
         return data  # 原数据已被原地修改
-
-    # def prepare_data(self, data: Any) -> Any:
-    #     """
-    #     递归替换请求数据中的占位符
-    #     :param data: 需要处理的数据
-    #     :return: 处理后的数据
-    #     """
-    #     if data is None:
-    #         return data
-    #     # TODO 想办法解决使用占位符替换int类型的数据时会因为不是规范的json导致整个json不替换的问题
-    #     if isinstance(data, dict):
-    #         return {k: self.prepare_data(v) for k, v in data.items()}
-    #     elif isinstance(data, list):
-    #         return [self.prepare_data(elem) for elem in data]
-    #     elif isinstance(data, str):
-    #         if self.placeholder_pattern.search(data):
-    #             try:
-    #                 return self.replace_placeholder(data)
-    #             except Exception as e:
-    #                 logger.warning(f"Error replacing placeholder in '{data}': {e}")
-    #                 return data
-    #         return data
-    #     else:
-    #         return data

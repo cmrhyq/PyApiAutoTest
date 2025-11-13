@@ -8,11 +8,11 @@ from typing import Dict, Any
 from common.http.request_util import RequestUtil
 from common.log.logger import Logger
 from core.config import ConfigManager
+from core.patterns.singleton.cache_singleton import CacheSingleton
 from core.session import TestSession
 from core.manager import TestCaseManager
 from core.executor import TestExecutor
 from core.reporter import AllureReporter
-from common.patterns import CacheSingleton
 
 logger = Logger().get_logger()
 

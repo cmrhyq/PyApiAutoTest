@@ -15,7 +15,7 @@ def read_test_cases_from_excel(file_path):
             parsed_case = {k: v for k, v in case.items()} # 复制一份，避免直接修改原始dict
 
             # 尝试解析 JSON 字符串
-            for key in ['headers', 'params', 'body', 'extract_vars', 'asserts']:
+            for key in ['headers', 'params', 'extract_vars', 'asserts']:
                 if isinstance(parsed_case.get(key), str) and parsed_case[key].strip():
                     try:
                         parsed_case[key] = json.loads(parsed_case[key])

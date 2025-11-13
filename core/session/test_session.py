@@ -7,8 +7,8 @@ from datetime import datetime
 from typing import Generator
 
 from common.log.logger import Logger
-from common.patterns import CacheSingleton
 from core.config.config_manager import ConfigManager
+from core.patterns.singleton.cache_singleton import CacheSingleton
 
 logger = Logger().get_logger()
 

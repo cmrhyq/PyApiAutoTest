@@ -4,10 +4,10 @@ import concurrent.futures
 from typing import Dict, List, Any
 
 from common.http.request_util import RequestUtil
-from common.patterns import CacheSingleton
 from common.validators.assert_util import assert_response
 from common.log.logger import Logger
 from core.manager.test_case_manager import TestCaseManager
+from core.patterns.singleton.cache_singleton import CacheSingleton
 
 logger = Logger().get_logger()
 
